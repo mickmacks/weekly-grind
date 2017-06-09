@@ -11,12 +11,14 @@ var ReactRoutes = (
 	<div>
   		<Route path='/' component={Home} />
 
-  		<Route path='/:user_name' component={Profile} />
+  		<Route path='/username' component={Profile} />
+  		<Route path='/username/settings/' component={Profile} />
+  		<Route path='/username/posts/' component={Profile} />
 
   		<Route path='/groups' component={Groups} />
-  		<Route path='/groups/:groupname' component={GroupDetail} />
+  		<Route path='/groups/group_name' component={GroupDetail} />
 
-  		<Route path='/groups/:groupname/:posttitle' component={PostDetail} />
+  		<Route path='/groups/group_name/:post_title' component={PostDetail} />
 	</div>
 )
 

@@ -4,20 +4,20 @@ import { firebase, auth } from '../utils/firebase'
 // import { Link } from 'react-router-dom'
 class Nav extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			pageName: 'Home',
-			currentUser: null,
+  constructor(props) {
+    super(props);
+    this.state = {
+      pageName: 'Home',
+      currentUser: null,
       loggedIn: false
-		}
+    }
     this.handleGetUserData = this.handleGetUserData.bind(this)
     this.loginButtonClicked = this.loginButtonClicked.bind(this)
     this.logoutButtonClicked = this.logoutButtonClicked.bind(this)
 
-	}
+  }
   
-	componentWillMount() {
+  componentWillMount() {
     auth.onAuthStateChanged(currentUser => {
       if (currentUser) {
         console.log('Logged in:', currentUser);
@@ -32,14 +32,14 @@ class Nav extends Component {
     })
   }
 
-	loginButtonClicked(e) {
+  loginButtonClicked(e) {
     e.preventDefault();
     // set up provider
     const provider = new firebase.auth.GoogleAuthProvider();
     console.log("signing in")
     // tell Firebase auth to log in with a popup and that provider
     auth.signInWithPopup(provider);
-	}
+  }
 
   componentDidMount() {
 
@@ -58,20 +58,20 @@ class Nav extends Component {
 
   }
 
-	logoutButtonClicked(e) {
+  logoutButtonClicked(e) {
     e.preventDefault();
     // tell Firebase auth to log out
     console.log("signing out");
     auth.signOut();
-	}
+  }
    
 
 
 
-	render() {
-		return(
+  render() {
+    return(
 
-			<nav className="navbar navbar-inverse">
+      <nav className="navbar navbar-inverse">
               <div className="container-fluid">
                 <div className="navbar-header">
                   <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -111,8 +111,8 @@ class Nav extends Component {
           </div>
         </nav>
 
-		)
-	}
+    )
+  }
 }
 
 export default Nav;

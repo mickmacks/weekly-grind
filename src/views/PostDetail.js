@@ -7,6 +7,7 @@ class PostDetail extends Component {
     return (
     <div>
       <h1>FOR EVERYTHING THAT IVE DONE</h1>
+      <button className="btn">HI</button>
       <h2>p.s. this is the post detail page</h2>
     </div>
     )

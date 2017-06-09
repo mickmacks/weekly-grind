@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Router, browserHistory} from 'react-router'
 import routes from './config/routes.js';
 // import App from './App';
-import './css/main.css';
+// import './css/main.css';
 import * as firebase from 'firebase';
 import registerServiceWorker from './registerServiceWorker';
 
