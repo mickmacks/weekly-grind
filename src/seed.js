@@ -9,7 +9,7 @@
 		},
 		"snazzyazzy":{
 			"name": "aaron",
-			"username": "azzy",
+			"username": "snazzyazzy",
 			"email": "aazazzy@gmail.com",
 			"password": "password"
 		}
@@ -21,6 +21,8 @@
 			"location": "san francisco",
 			"password": "password",
 			"members": {
+
+				// TODO: look up reference data syntax for 30 mins
 				"jdawg": true,
 				"snazzyazzy": true
 			}
