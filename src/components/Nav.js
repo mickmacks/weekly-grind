@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { firebase, auth } from '../utils/firebase'
+import { auth, firebase, blah } from '../index.js'
 
 // import { Link } from 'react-router-dom'
 class Nav extends Component {
@@ -18,18 +18,18 @@ class Nav extends Component {
   }
   
   componentWillMount() {
-    auth.onAuthStateChanged(currentUser => {
-      if (currentUser) {
-        console.log('Logged in:', currentUser);
-        // set currentUser in App component state
-        this.setState({ currentUser });
-        // currentUserData=currentUser;
-        // console.log(currentUserData);
-        console.log(this.state, "logging");
-      } else {
-        this.setState({ currentUser: null });
-      }
-    })
+    // auth.onAuthStateChanged(currentUser => {
+    //   if (currentUser) {
+    //     console.log('Logged in:', currentUser);
+    //     // set currentUser in App component state
+    //     this.setState({ currentUser });
+    //     // currentUserData=currentUser;
+    //     // console.log(currentUserData);
+    //     console.log(this.state, "logging");
+    //   } else {
+    //     this.setState({ currentUser: null });
+    //   }
+    // })
   }
 
   loginButtonClicked(e) {

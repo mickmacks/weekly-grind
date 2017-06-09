@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import * as firebase from 'firebase';
-import { Match } from 'react-router';
+import { auth, firebase, blah } from './index.js'
 import Home from './views/Home.js'
 
 class App extends Component {
@@ -14,14 +13,15 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // auth.onAuthStateChanged(currentUser => {
-    //   if (currentUser) {
-    //     console.log('Logged in:', currentUser);
-    //     this.setState({ currentUser });
-    //   } else {
-    //     this.setState({ currentUser: null });
-    //   }
-    // });
+    auth.onAuthStateChanged(currentUser => {
+      if (currentUser) {
+        console.log('Logged in:', currentUser);
+        // set currentUser in App component state
+        this.setState({ currentUser });
+      } else {
+        this.setState({ currentUser: null });
+      }
+    });
   }
 
   componentDidMount() {
@@ -39,19 +39,23 @@ class App extends Component {
 
   loginButtonClicked(e) {
     e.preventDefault();
-    // tell Firebase auth to log in
+    // set up provider 
+    const provider = new firebase.auth.GoogleAuthProvider();
     console.log("signing in")
+    // tell Firebase auth to log in with a popup and that provider
+    auth.signInWithPopup(provider);
   }
   logoutButtonClicked(e) {
     e.preventDefault();
     // tell Firebase auth to log out
     console.log("signing out");
+    auth.signOut();
   }
 
   render() {
     return (
       <div className="App">
-         <Match exact pattern="/" component={Home}/>
+         <h1>{blah}</h1>
       </div>
     );
   }
