@@ -7,7 +7,8 @@ class App extends Component {
     super(props);
     this.state = {
       camels: 42,
-      currUser: null
+      currUser: null,
+      tacos: []
     }
   }
 
@@ -23,15 +24,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const rootRef = firebase.database().ref();
-    const camelsRef = rootRef.child('camels');
+    const rootRef = firebase.database().ref().child('tacos');
+    const tacos = rootRef.child('taco1');
     // 'on' method synchronizes data in real time
     // attach it onto a reference that points to a place in the database
-
     // so when the database makes a change, make that update to our react state in real time
-    camelsRef.on('value', snap => {
+    tacos.on('value', snap => {
         this.setState({
-          camels: snap.val()
+          tacos: snap.val()
         })
     })
   }
@@ -51,10 +51,11 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome To Weekly Grind I Guess...</h1> 
-        <h2>fake camels is {this.state.camels}</h2>     
+        <h2>fake camels is {this.state.tacos}</h2>     
       </div>
     );
   }
 }
 
 export default App;
+
