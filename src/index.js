@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import {Router, browserHistory} from 'react-router'
+import routes from './config/routes.js';
+// import App from './App';
 import './css/main.css';
 import * as firebase from 'firebase';
 import registerServiceWorker from './registerServiceWorker';
@@ -17,7 +19,7 @@ const config = {
 firebase.initializeApp(config);
 
 ReactDOM.render(
-		<App />, 
+		<Router routes={routes} history={browserHistory} />, 
 		document.getElementById('root')
 	);
 registerServiceWorker();

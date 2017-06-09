@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
+import { Match } from 'react-router';
+import Home from './views/Home.js'
 
 class App extends Component {
 
@@ -8,7 +10,6 @@ class App extends Component {
     this.state = {
       camels: 42,
       currUser: null,
-      tacos: []
     }
   }
 
@@ -24,14 +25,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const rootRef = firebase.database().ref().child('tacos');
-    const tacos = rootRef.child('taco1');
+    const rootRef = firebase.database().ref();
+    const camelsRef = rootRef.child('camels');
     // 'on' method synchronizes data in real time
     // attach it onto a reference that points to a place in the database
     // so when the database makes a change, make that update to our react state in real time
-    tacos.on('value', snap => {
+    camelsRef.on('value', snap => {
         this.setState({
-          tacos: snap.val()
+          camels: snap.val()
         })
     })
   }
@@ -50,8 +51,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome To Weekly Grind I Guess...</h1> 
-        <h2>fake camels is {this.state.tacos}</h2>     
+         <Match exact pattern="/" component={Home}/>
       </div>
     );
   }

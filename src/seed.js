@@ -73,7 +73,7 @@
 			"title": "Taco Taco Burrito",
 			"body": "Yes Tacos",
 			"image": "http://asdasdasdasda",
-			"likes": 1,
+			"likes": 0,
 			"createdAt": "23rd June 2017, 10:51:15 AM"
 		}
 
