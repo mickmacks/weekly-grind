@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { auth, firebase, blah } from './index.js'
+import { auth, firebase } from './index.js'
 import Home from './views/Home.js'
 
 class App extends Component {
@@ -55,7 +55,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         <h1>{blah}</h1>
       </div>
     );
   }

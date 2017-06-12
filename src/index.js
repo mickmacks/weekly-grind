@@ -19,15 +19,12 @@ firebase.initializeApp(config);
 
 const auth = firebase.auth();
 
-const blah = "asnjkansdnaskjdnajks"
-
-
 ReactDOM.render(
 		<Router routes={routes} history={browserHistory} />, 
 		document.getElementById('root')
 	);
 
-export { auth, firebase, blah } 
+export { auth, firebase } 
 
 
 
