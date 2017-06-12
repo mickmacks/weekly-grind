@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from '../components/Nav'
 import Hero from '../components/Hero'
+import PostsContainer from '../containers/PostsContainer'
 import Footer from '../components/Footer'
 import { auth, firebase } from '../index.js'
 
@@ -11,6 +12,7 @@ class Home extends Component {
     <div>
     	<Nav />
     	<Hero />
+    	<PostsContainer />
 		<Footer />
 	</div>
     )

@@ -103,7 +103,6 @@ nav h1 {
 #hero-signup {
 
   width: 100vw;
-  height: 40vh;
   padding-top: 120px;
   background-color: #E87658;
 
@@ -116,6 +115,17 @@ nav h1 {
     font-size: 6rem;
     letter-spacing: 1px;
     color: white;
+
+}
+
+/*   Posts   */
+
+.postsList {
+
+  width: 100%;
+  background-color: #F2F2ED;
+  min-height: 800px;
+
 
 }
 

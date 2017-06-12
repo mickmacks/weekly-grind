@@ -1,0 +1,144 @@
+{
+
+	"users": {
+
+		"irissilva":{
+			"_id": "00000001",
+			"firstName": "Iris",
+			"lastName": "Silva",
+			"username": "irissilva",
+			"userImage": "http://www.unsplash.it/1500",
+			"email": "is@gmail.com",
+			"password": "password",
+			"occupation": "Illustrator",
+			"location": "San Francisco",
+			"groups": ["00010001"],
+			"posts": ["00001111"]
+		},
+		"henrysmith":{
+			"_id": "00000002",
+			"firstName": "Henry",
+			"lastName": "Smith",
+			"username": "henrysmith",
+			"userImage": "http://www.unsplash.it/1500",
+			"email": "hs@gmail.com",
+			"password": "password",
+			"occupation": "Designer",
+			"location": "Oakland",
+			"groups": ["00010001"],
+			"posts": ["00001112"]
+		},
+		"harukisou":{
+			"_id": "00000003",
+			"firstName": "Haruki",
+			"lastName": "Sou",
+			"username": "harukisou",
+			"userImage": "http://www.unsplash.it/1500",
+			"email": "hs@gmail.com",
+			"password": "password",
+			"occupation": "Developer",
+			"location": "San Jose",
+			"groups": ["00010001"],
+			"posts": []
+		},
+		"jezhoward":{
+			"_id": "00000004",
+			"firstName": "Jez",
+			"lastName": "Howard",
+			"username": "jezhoward",
+			"userImage": "http://www.unsplash.it/1500",
+			"email": "jh@gmail.com",
+			"password": "password",
+			"occupation": "UX Designer",
+			"location": "San Francisco",
+			"groups": ["00010001"],
+			"posts": []
+		},
+		"rajkhan":{
+			"_id": "00000005",
+			"firstName": "Raj",
+			"lastName": "Khan",
+			"username": "rajkhan",
+			"userImage": "http://www.unsplash.it/1500",
+			"email": "rk@gmail.com",
+			"password": "password",
+			"occupation": "Photographer",
+			"location": "Los Angeles",
+			"groups": ["00010001"],
+			"posts": []
+		},
+		"erikjohnson":{
+			"_id": "00000006",
+			"firstName": "Erik",
+			"lastName": "Johnson",
+			"username": "erikjohnson",
+			"userImage": "http://www.unsplash.it/1500",
+			"email": "ej@gmail.com",
+			"password": "password",
+			"occupation": "Illustrator",
+			"location": "San Francisco",
+			"groups": ["00010001"],
+			"posts": []
+		}
+
+	},
+
+	"groups": {
+
+		"Sketch Club":{
+			"_id": "00010001",
+			"name": "Sketch Club",
+			"heroImage": "http://www.unsplash.it/1500",
+			"logo": "http://www.unsplash.it/1500",
+			"nextMeet": "23rd June 2017, 10:12:14 AM",
+			"location": "san francisco",
+			"password": "password",
+
+			"admins": [
+				"00000001"
+			],
+			"users": [ 
+				"00000001",
+				"00000002",
+				"00000003",
+				"00000004",
+				"00000005",
+				"00000006"
+			],
+			"posts": [
+				"00001111",
+				"00001112"
+			]			
+		}
+
+	},
+
+	"posts": [
+
+		{	
+			"_id": "00001111",
+			"user_id": "00000001",
+			"group_id": "00010001",
+			"title": "Taco Time",
+			"body": "Let's get some god damn tacos",
+			"image": "http://www.unsplash.it/1500",
+			"likesCount": 1,
+			"likedBy": ["00000004"],
+			"createdAt": "23rd June 2017, 10:11:15 AM",
+			"updatedAt": "23rd June 2017, 10:12:14 AM"
+		},
+		{	
+			"_id": "00001112",
+			"user_id": "00000002",
+			"group_id": "00010001",
+			"title": "Taco Taco Burrito",
+			"body": "Yes Tacos",
+			"image": "http://www.unsplash.it/1500",
+			"likesCount": 1,
+			"likedBy": ["00000003"],
+			"createdAt": "23rd June 2017, 10:51:15 AM"
+		}
+
+	]
+
+}
