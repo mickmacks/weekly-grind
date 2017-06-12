@@ -27,8 +27,8 @@ class PostsContainer extends Component {
 
 	loadPostsFromServer(){
 
-
-    const postsRef = fb.child('posts');
+    const postsRef = fb.ref().child('posts');
+    console.log('posts from postscontainer is:', postsRef)
     // 'on' method synchronizes data in real time
     // attach it onto a reference that points to a place in the database
     // so when the database makes a change, make that update to our react state in real time
@@ -37,9 +37,6 @@ class PostsContainer extends Component {
           posts: snap.val()
         })
     })
-
-    console.log("posts state is:", this.state.posts)
-
 
   	}
 
