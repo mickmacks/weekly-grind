@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { firebase } from '../index.js'
 
 class Hero extends Component {
 	constructor() {

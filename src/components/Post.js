@@ -6,9 +6,6 @@ class Post extends Component {
 
 	render() {
 
-		var formattedDate = this.props.post.date.split("T")[0];
-		var truncatedText = this.props.post.text.substring(0, 350) + '…';
-		let postLink = `/cities/${this.props.post.city}/posts/${this.props.post._id}`
 
 
 		return(
@@ -20,9 +17,9 @@ class Post extends Component {
 				</div>
 				<div className="postSection col-sm-12 col-md-12 col-lg-9">
 					<h1 className="postTitle">{this.props.post.title}</h1>
-					<p className="postText">{truncatedText}</p>
-					<h5><a href={postLink}>Read more…</a></h5>
-					<h6 className="postDate">Posted on: {formattedDate}</h6>
+					<p className="postText">{this.props.post.body}</p>
+					<h5><a href="#">Read more…</a></h5>
+					<h6 className="postDate">Posted on: {this.props.post.createdAt}</h6>
 
 				</div>
 			</div>
@@ -31,3 +28,7 @@ class Post extends Component {
 }
 
 export default Post;
+
+// var formattedDate = this.props.post.date.split("T")[0];
+// 		var truncatedText = this.props.post.text.substring(0, 350) + '…';
+// 		let postLink = `/cities/${this.props.post.city}/posts/${this.props.post._id}`

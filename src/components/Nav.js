@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { auth, firebase, blah } from '../index.js'
+import { auth, firebase } from '../index.js'
 
 // import { Link } from 'react-router-dom'
 class Nav extends Component {
@@ -37,8 +37,8 @@ class Nav extends Component {
     console.log("signing in")
     // tell Firebase auth to log in with a popup and that provider
     auth.signInWithPopup(provider);
-    document.getElementById('login').style.visibility = 'hidden' 
-    document.getElementById('logout').style.visibility = 'visible'
+    document.getElementById('login').style.display = 'none' 
+    document.getElementById('logout').style.display = 'inline-block'
 
   }
 
@@ -47,8 +47,8 @@ class Nav extends Component {
     // tell Firebase auth to log out
     console.log("signing out");
     auth.signOut();
-    document.getElementById('logout').style.visibility = 'hidden'
-    document.getElementById('login').style.visibility = 'visible' 
+    document.getElementById('logout').style.display = 'none'
+    document.getElementById('login').style.display = 'inline-block' 
 
   }
 

@@ -55,6 +55,12 @@ h5 {
 
 /*   I D S   */
 
+#logout {
+
+  display: none;
+
+}
+
 /*   C L A S S E S   */
 
 /*   C O M P O N E N T S   */
@@ -70,6 +76,7 @@ nav {
   padding: 20px 30px;
   color: white;
   width: 100%;
+  z-index: 10;
 
 }
 
@@ -157,6 +164,7 @@ button:hover, button:active {
   margin: 0 auto;
   text-align: center;
   color: white;
+
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;

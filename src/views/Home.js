@@ -3,7 +3,7 @@ import Nav from '../components/Nav'
 import Hero from '../components/Hero'
 import PostsContainer from '../containers/PostsContainer'
 import Footer from '../components/Footer'
-import { auth, firebase } from '../index.js'
+import { fb } from '../index.js'
 
 
 class Home extends Component {

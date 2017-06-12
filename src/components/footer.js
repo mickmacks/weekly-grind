@@ -9,9 +9,9 @@ class Footer extends Component {
 			<footer>
 				<div id="footer">
 					<ul id="footerlist">
-						<li><a href="#">About</a></li><br></br>
-						<li><a href="#">Contact Us</a></li><br></br>
-						<li><a href="#">Other Page</a></li><br></br>
+						<li><a href="http:localhost:3000">About</a></li><br></br>
+						<li><a href="http:localhost:3000">Contact Us</a></li><br></br>
+						<li><a href="http:localhost:3000">Other Page</a></li><br></br>
 						<li><p>© 2017 Mahmoud Bachir</p></li>
 					</ul>
 						<div>

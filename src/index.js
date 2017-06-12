@@ -19,12 +19,15 @@ firebase.initializeApp(config);
 
 const auth = firebase.auth();
 
+const fb = firebase.database().ref();
+
+
 ReactDOM.render(
 		<Router routes={routes} history={browserHistory} />, 
 		document.getElementById('root')
 	);
 
-export { auth, firebase } 
+export { auth, firebase, fb } 
 
 
 

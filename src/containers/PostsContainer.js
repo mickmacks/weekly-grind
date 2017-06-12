@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import { fb } from '../index.js'
 import $ from 'jquery-ajax';
 
 import PostsList from './PostsList'
@@ -9,16 +9,15 @@ import ModalForm from '../components/ModalForm'
 
 class PostsContainer extends Component {
 
-	// Research Prop.types
-	// Check to see if username is being passed in as a prop
-
 	constructor(props) {
 		super(props);
 		this.state = {
 			posts: []
 		};
 
-	// 	this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
+
+
+		this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
 	// 	this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
 	// 	//this.handlePostSubmit = this.handlePostSubmit.bind(this);
 	// 	// this.handlePostDelete = this.handlePosttDelete.bind(this);
@@ -28,14 +27,20 @@ class PostsContainer extends Component {
 
 	loadPostsFromServer(){
 
-		// // need to load posts from server
-		// console.log('city id', this.props.routeParams.cityId);
-	 //    $.ajax({
-	 //      method: 'GET',
-	 //      url: `http://localhost:3000/api/cities/${this.props.routeParams.cityId}/posts`
-	 //    })
-	 //    .then( (res) => {this.setState({posts: res})
-		// 	})
+
+    const postsRef = fb.child('posts');
+    // 'on' method synchronizes data in real time
+    // attach it onto a reference that points to a place in the database
+    // so when the database makes a change, make that update to our react state in real time
+    postsRef.on('value', snap => {
+        this.setState({
+          posts: snap.val()
+        })
+    })
+
+    console.log("posts state is:", this.state.posts)
+
+
   	}
 
 	handleNewPostSubmit(post){
@@ -92,14 +97,12 @@ class PostsContainer extends Component {
   }
 
   componentDidMount() {
-    // this.loadPostsFromServer();
+    this.loadPostsFromServer();
     // setInterval(this.loadPostsFromServer, this.props.pollInterval);
   }
 
 
 	render() {
-
-		// const targetPost = this.state.posts.map(post => post.cityName)
 
 		// const testPost = this.state.posts[0]
 
