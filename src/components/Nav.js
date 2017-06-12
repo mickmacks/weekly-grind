@@ -11,25 +11,24 @@ class Nav extends Component {
       currentUser: null,
       loggedIn: false
     }
-    this.handleGetUserData = this.handleGetUserData.bind(this)
     this.loginButtonClicked = this.loginButtonClicked.bind(this)
     this.logoutButtonClicked = this.logoutButtonClicked.bind(this)
 
   }
   
   componentWillMount() {
-    // auth.onAuthStateChanged(currentUser => {
-    //   if (currentUser) {
-    //     console.log('Logged in:', currentUser);
-    //     // set currentUser in App component state
-    //     this.setState({ currentUser });
-    //     // currentUserData=currentUser;
-    //     // console.log(currentUserData);
-    //     console.log(this.state, "logging");
-    //   } else {
-    //     this.setState({ currentUser: null });
-    //   }
-    // })
+    auth.onAuthStateChanged(currentUser => {
+      if (currentUser) {
+        console.log('Logged in:', currentUser);
+        // set currentUser in App component state
+        this.setState({ currentUser });
+        // currentUserData=currentUser;
+        // console.log(currentUserData);
+        console.log(this.state, "logging");
+      } else {
+        this.setState({ currentUser: null });
+      }
+    })
   }
 
   loginButtonClicked(e) {
@@ -39,22 +38,6 @@ class Nav extends Component {
     console.log("signing in")
     // tell Firebase auth to log in with a popup and that provider
     auth.signInWithPopup(provider);
-  }
-
-  componentDidMount() {
-
-    setInterval(this.handleGetUserData, 3000);
-
-  }
-
-  handleGetUserData() {
-
-    var uData = this.state.currentUser;
-    
-    () => {
-      console.log('clicked test button');
-      this.props.onGetUserData(uData)
-    }
 
   }
 
@@ -64,9 +47,6 @@ class Nav extends Component {
     console.log("signing out");
     auth.signOut();
   }
-   
-
-
 
   render() {
     return(
