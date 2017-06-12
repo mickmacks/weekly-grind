@@ -2,7 +2,7 @@
 
 /*   H T M L  T A G S   */
 
-body {
+* {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -15,7 +15,6 @@ h1 {
   font-weight: 800;
   font-size: 3.5rem;
   letter-spacing: 1px;
-  color: black;
 
 }
 
@@ -54,13 +53,6 @@ h5 {
 
 }
 
-nav h4 {
-  display: inline-block;
-  font-size: 30px;
-  width: 100%;
-  margin-top: -8px;
-}
-
 /*   I D S   */
 
 /*   C L A S S E S   */
@@ -72,28 +64,75 @@ nav h4 {
 nav {
 
   position: fixed;
-  display: block;
+  display: flex;
   top: 0;
-  background-color: #FAC471;
+  background-color: #F0525A;
+  padding: 20px 30px;
   color: white;
-  height: 80px;
-  width: 100%
+  width: 100%;
+
+}
+
+nav ul {
+
+  position: absolute;
+  right: 80px;
+
+}
+
+nav ul li {
+
+  display: inline-flex;
+  position: relative;
+  margin-top: 10px;
+  padding: 0px 20px;
+  text-transform: uppercase;
 
 }
 
 nav a {
 
   text-decoration: none;
+
+}
+
+nav a h4 {
+
+  font-family: 'Eczar', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
   color: white;
 
 }
 
-nav h1 {
+button {
 
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  color: white;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 15px 30px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  outline: none;
+  position: relative;
+  border-radius: 40px;
+  border: 1px solid #fff;
+  color: #fff;
+
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+
+}
+
+button:hover, button:active {
+
+  color: #E87658;
+  background: #fff;
 
 }
 
@@ -102,30 +141,52 @@ nav h1 {
 
 #hero-signup {
 
-  width: 100vw;
-  padding-top: 120px;
-  background-color: #E87658;
+  padding: 175px 15% 100px 15%;
+  background: linear-gradient(320deg, #f3694a, #fcc5b1);
+  background-size: 400% 400%;
+
+  -webkit-animation: hero-signup-bkg 10s ease infinite;
+  -moz-animation: hero-signup-bkg 10s ease infinite;
+  -o-animation: hero-signup-bkg 10s ease infinite;
+  animation: hero-signup-bkg 10s ease infinite;
 
 }
 
-#hero-signup h1 {
+#hero-signup-copy {
 
-    font-family: 'Eczar', sans-serif;
-    font-weight: 600;
-    font-size: 6rem;
-    letter-spacing: 1px;
-    color: white;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 
+}
+
+#hero-signup-copy:hover {
+
+  -moz-transform: scale(1.02);
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+
+}
+
+#hero-signup-copy h1 {
+
+  font-family: 'Eczar', sans-serif;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 4rem;
+  letter-spacing: 1px;
+  padding-bottom: 20px;
 }
 
 /*   Posts   */
 
 .postsList {
 
-  width: 100%;
   background-color: #F2F2ED;
   min-height: 800px;
-
 
 }
 
@@ -142,4 +203,26 @@ footer {
 
 /*   A N I M A T I O N   */
 
+/*   Hero Background Gradient   */
+
+@-webkit-keyframes hero-signup-bkg {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes hero-signup-bkg {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes hero-signup-bkg {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes hero-signup-bkg { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
 

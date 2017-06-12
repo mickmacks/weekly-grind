@@ -14,9 +14,10 @@ class Hero extends Component {
 
 			<div id="hero-signup">
 
-	            	<h1>Weekly Grind is a community of  growing creative minds. No rules,  no limitations.</h1>
-
-	            	<button>GET STARTED</button>
+	            	<div id="hero-signup-copy">
+	            		<h1>Weekly Grind is a community of  growing creative minds. No rules. No limits.</h1>
+						<button id="hero-signup-btn">SIGN UP</button>
+					</div>
 
 			</div>
 

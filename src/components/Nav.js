@@ -7,7 +7,6 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageName: 'Home',
       currentUser: null,
       loggedIn: false
     }
@@ -38,6 +37,8 @@ class Nav extends Component {
     console.log("signing in")
     // tell Firebase auth to log in with a popup and that provider
     auth.signInWithPopup(provider);
+    document.getElementById('login').style.visibility = 'hidden' 
+    document.getElementById('logout').style.visibility = 'visible'
 
   }
 
@@ -46,37 +47,35 @@ class Nav extends Component {
     // tell Firebase auth to log out
     console.log("signing out");
     auth.signOut();
+    document.getElementById('logout').style.visibility = 'hidden'
+    document.getElementById('login').style.visibility = 'visible' 
+
   }
 
   render() {
     return(
 
       <nav>
-        <div className="container-fluid">
+        <a href="http://localhost:3001"><h4>WeeklyGrind</h4></a>
 
-        <a href="http://localhost:3001" className="navbar-brand"><h4>WeeklyGrind</h4></a>
+        <ul>
 
-        <ul className="nav navbar-nav navbar-right">
-
-          <li id="userName">{this.state.currentUser && this.state.currentUser.displayName}</li>
-
-          <li>
+          <li id="login">
             <a onClick={this.loginButtonClicked}>
-              <span className="glyphicon glyphicon-log-in"></span> 
               Login
             </a>
           </li>
 
-          <li>
+          <li id="logout">
             <a onClick={this.logoutButtonClicked}>
-              <span className="glyphicon glyphicon-log-out" ></span> 
               Logout
             </a>
           </li>
 
-        </ul>
+          <li id="userName">{this.state.currentUser && this.state.currentUser.displayName}</li>
 
-        </div>
+
+        </ul>
       </nav>
 
     )
