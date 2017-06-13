@@ -276,7 +276,7 @@ button:hover, button:active {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  transform: translate(40%, -25%);
+  transform: translate(35%, -25%);
 
 }
 
@@ -284,7 +284,7 @@ button:hover, button:active {
 
   font-size: 1.5rem;
   margin-top: -20px;
-  margin-bottom: -5px;
+  margin-bottom: -8px;
   width: 1fr;
   padding: 0px;
   text-align: left;
@@ -293,7 +293,7 @@ button:hover, button:active {
 
 .post-card h4 {
   
-  font-size: 1rem;
+  font-size: .9rem;
   font-family: 'Work Sans', sans-serif;
   font-weight: 200;
   letter-spacing: 1px;
