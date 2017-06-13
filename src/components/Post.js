@@ -56,7 +56,7 @@ class Post extends Component {
 						<h3 className="post-info-username">{this.state.username}</h3>
 						<h4 className="post-info-location">{this.state.location}</h4>
 					</div>
-					<h5 className="post-likes-count">{this.props.post.likesCount}</h5>
+					<h5 className="post-likes-count"><img src="./images/heart.png" /> {this.props.post.likesCount}</h5>
 				</div>
 			</div>
 		)
