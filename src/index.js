@@ -19,7 +19,7 @@ firebase.initializeApp(config);
 
 const auth = firebase.auth();
 
-const fb = firebase.database();
+const fb = firebase.database().ref();
 
 
 ReactDOM.render(

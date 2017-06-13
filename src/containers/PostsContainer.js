@@ -27,7 +27,7 @@ class PostsContainer extends Component {
 
 	loadPostsFromServer(){
 
-    const postsRef = fb.ref().child('posts');
+    const postsRef = fb.child('posts');
     console.log('posts from postscontainer is:', postsRef)
     // 'on' method synchronizes data in real time
     // attach it onto a reference that points to a place in the database

@@ -3,21 +3,62 @@ import { firebase, fb } from "../index.js"
 
 class Post extends Component {
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			user_key: []
+		};
+
+		this.getUser = this.getUser.bind(this);
+	}
+
+		
+
+		
+
+		// ref.orderByKey().on('value', function(snap) {
+		// 	console.log('value', snap.val());
+		// })
+
+		getUser() {
+
+			let usersRef = fb.child('users');
+			let user;
+
+			usersRef.orderByChild('_id').equalTo('00000001').on("value", snap => {
+				user = snap.val()
+				
+
+				// snap.forEach(function(data) {
+    //     			console.log(data);
+    // 			});
+
+				// this.setState({
+				// 	username: snap.val()
+				// });
+			});
+
+			console.log(user)
+
+			console.log('username is: ', this.state.username)
+
+		}
+
+		componentWillMount() {
+
+			this.getUser()
+
+		}	
+
+
 	render() {
-
-		let postUserId = this.props.post.user_id
-		let ref = fb.ref().child('users')
-
-		ref.orderByKey().limitToLast(1).on('value', function(snap) {
-			console.log('value', snap.val());
-		})
 
 		return(
 
 			<div className="postCard col-sm-12 col-md-12 col-lg-12">
 				<div className="userSection col-sm-12 col-md-12 col-lg-3">
 					<img src={this.props.post.image}></img>
-					<h3 className="postUser">{this.props.post.user_id}</h3>
+					<h3 className="postUser">{this.state.username}</h3>
 				</div>
 				<div className="postSection col-sm-12 col-md-12 col-lg-9">
 					<h1 className="postTitle">{this.props.post.title}</h1>
