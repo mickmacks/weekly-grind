@@ -6,50 +6,35 @@ class Post extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			user_key: []
+			username: ''
 		};
 
 		this.getUser = this.getUser.bind(this);
 	}
 
-		
+	getUser() {
 
-		
+		let usersRef = fb.child('users');
+		let userId = this.props.post.user_id
 
-		// ref.orderByKey().on('value', function(snap) {
-		// 	console.log('value', snap.val());
-		// })
+		usersRef.orderByChild('_id').equalTo(userId).on("value", snap => {
+			
+			let firstName = snap.val()[userId].firstName
+			let lastName = snap.val()[userId].lastName
+			let fullName = firstName + " " + lastName
 
-		getUser() {
-
-			let usersRef = fb.child('users');
-			let user;
-
-			usersRef.orderByChild('_id').equalTo('00000001').on("value", snap => {
-				user = snap.val()
-				
-
-				// snap.forEach(function(data) {
-    //     			console.log(data);
-    // 			});
-
-				// this.setState({
-				// 	username: snap.val()
-				// });
+			this.setState({
+				username: fullName
 			});
 
-			console.log(user)
-
 			console.log('username is: ', this.state.username)
+		});
 
-		}
+	}
 
-		componentWillMount() {
-
-			this.getUser()
-
-		}	
-
+	componentWillMount() {
+		this.getUser()
+	}	
 
 	render() {
 

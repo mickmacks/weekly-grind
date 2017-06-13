@@ -2,7 +2,7 @@
 
 	"users": {
 
-		"irissilva":{
+		"00000001":{
 			"_id": "00000001",
 			"firstName": "Iris",
 			"lastName": "Silva",
@@ -15,7 +15,7 @@
 			"groups": ["00010001"],
 			"posts": ["00001111"]
 		},
-		"henrysmith":{
+		"00000002":{
 			"_id": "00000002",
 			"firstName": "Henry",
 			"lastName": "Smith",
@@ -28,7 +28,7 @@
 			"groups": ["00010001"],
 			"posts": ["00001112"]
 		},
-		"harukisou":{
+		"00000003":{
 			"_id": "00000003",
 			"firstName": "Haruki",
 			"lastName": "Sou",
@@ -41,7 +41,7 @@
 			"groups": ["00010001"],
 			"posts": []
 		},
-		"jezhoward":{
+		"00000004":{
 			"_id": "00000004",
 			"firstName": "Jez",
 			"lastName": "Howard",
@@ -54,7 +54,7 @@
 			"groups": ["00010001"],
 			"posts": []
 		},
-		"rajkhan":{
+		"00000005":{
 			"_id": "00000005",
 			"firstName": "Raj",
 			"lastName": "Khan",
@@ -67,7 +67,7 @@
 			"groups": ["00010001"],
 			"posts": []
 		},
-		"erikjohnson":{
+		"00000006":{
 			"_id": "00000006",
 			"firstName": "Erik",
 			"lastName": "Johnson",
