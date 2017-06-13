@@ -40,6 +40,8 @@ h3 {
 
 h4 {
 
+  margin: 0;
+
 }
 
 h5 {
@@ -108,8 +110,10 @@ nav a h4 {
 
   font-family: 'Eczar', sans-serif;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: white;
+  margin: -2px 0px;
+  padding: 0px;
 
 }
 
@@ -271,8 +275,7 @@ button:hover, button:active {
   /*display: flex;*/
   grid-template-columns: 1fr 1fr 1fr;
   flex-wrap: wrap;
-  min-height: 800px;
-  padding: 20px;
+  padding: 20px 0px 100px 0px;
 
 }
 
