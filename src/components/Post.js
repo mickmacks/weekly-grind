@@ -6,7 +6,9 @@ class Post extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: ''
+			username: '',
+			userImage: '',
+			location: ''
 		};
 
 		this.getUser = this.getUser.bind(this);
@@ -21,13 +23,17 @@ class Post extends Component {
 			
 			let firstName = snap.val()[userId].firstName
 			let lastName = snap.val()[userId].lastName
-			let fullName = firstName + " " + lastName
+			let currFullName = firstName + " " + lastName
+
+			let currUserLocation = snap.val()[userId].location
+			let currUserImage = snap.val()[userId].userImage
 
 			this.setState({
-				username: fullName
+				username: currFullName,
+				location: currUserLocation, 
+				userImage: currUserImage
 			});
 
-			console.log('username is: ', this.state.username)
 		});
 
 	}
@@ -40,17 +46,17 @@ class Post extends Component {
 
 		return(
 
-			<div className="postCard col-sm-12 col-md-12 col-lg-12">
-				<div className="userSection col-sm-12 col-md-12 col-lg-3">
+			<div className="post-card">
+				<div className="post-image">
 					<img src={this.props.post.image}></img>
-					<h3 className="postUser">{this.state.username}</h3>
 				</div>
-				<div className="postSection col-sm-12 col-md-12 col-lg-9">
-					<h1 className="postTitle">{this.props.post.title}</h1>
-					<p className="postText">{this.props.post.body}</p>
-					<h5><a href="#">Read more…</a></h5>
-					<h6 className="postDate">Posted on: {this.props.post.createdAt}</h6>
-
+				<div className="post-info">
+					<img className="post-info-profile" src={this.state.userImage} alt={this.state.username}/>
+					<div className="post-info-user">
+						<h3 className="post-info-username">{this.state.username}</h3>
+						<h4 className="post-info-location">{this.state.location}</h4>
+					</div>
+					<h5 className="post-likes-count">{this.props.post.likesCount}</h5>
 				</div>
 			</div>
 		)

@@ -107,7 +107,7 @@ class PostsContainer extends Component {
 
 		return(
 
-			<div>	
+			<div className="posts-container-main">	
 				<PostsList
 					posts={this.state.posts}
 					onPostDelete={this.handlePostDelete}

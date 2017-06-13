@@ -7,7 +7,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      camels: 42,
       currUser: null,
     }
   }
@@ -25,16 +24,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const rootRef = firebase.database().ref();
-    const camelsRef = rootRef.child('camels');
-    // 'on' method synchronizes data in real time
-    // attach it onto a reference that points to a place in the database
-    // so when the database makes a change, make that update to our react state in real time
-    camelsRef.on('value', snap => {
-        this.setState({
-          camels: snap.val()
-        })
-    })
+    // const rootRef = firebase.database().ref();
+    // const camelsRef = rootRef.child('camels');
+    // // 'on' method synchronizes data in real time
+    // // attach it onto a reference that points to a place in the database
+    // // so when the database makes a change, make that update to our react state in real time
+    // camelsRef.on('value', snap => {
+    //     this.setState({
+    //       camels: snap.val()
+    //     })
+    // })
   }
 
   loginButtonClicked(e) {

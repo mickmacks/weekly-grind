@@ -191,12 +191,117 @@ button:hover, button:active {
 
 /*   Posts   */
 
-.postsList {
+.posts-container-main {
 
   background-color: #F2F2ED;
-  min-height: 800px;
+  text-align: center;
 
 }
+
+.posts-container-main h1 {
+
+  padding: 40px 0px 10px 0px;
+
+}
+
+.posts-list-items {
+
+  /*display: flex;*/
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-wrap: wrap;
+  margin: 0px 10px 10px 0px;
+  min-height: 800px;
+  padding: 20px;
+
+}
+
+.post-card {
+  
+  display: inline-grid;
+  margin: 10px;
+  font-size: 14px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  border-radius: 20px;
+
+}
+
+.post-image {
+  
+  display: flex;
+
+}
+
+.post-image img {
+  
+  width: 400px;
+  height: 300px;
+  overflow: hidden;
+
+}
+
+.post-info {
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  background-color: white;
+  width: 400px;
+  padding: 0px;
+
+}
+
+.post-info-user {
+
+  padding: 20px;
+  border: 1px black solid;
+
+}
+
+.post-info-profile {
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  transform: translate(50%, -25%);
+
+}
+
+.post-card h3 {
+
+  font-size: 1.5rem;
+  margin-top: -20px;
+  width: 1fr;
+  padding: 0px 0px 0px 20px;
+  text-align: left;
+
+
+}
+
+.post-card h4 {
+
+  
+  font-size: 1rem;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  padding: 0px;
+
+}
+
+.post-card h5 {
+
+  font-size: 1rem;
+  padding: 0px;
+
+}
+
+.postsList {
+
+
+}
+
+.
 
 /*   Footer   */
 

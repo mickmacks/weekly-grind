@@ -18,10 +18,10 @@ class PostsList extends Component {
 
 		return(
 
-			<div className="postsList container">
-				<h1 className="cityTitle center">{this.props.cityName}</h1>
+			<div className="posts-list-container">
+				<h1 className="posts-title">Popular Posts</h1>
 
-				<div className="row">
+				<div className="posts-list-items">
 					{postsArray}
 				</div>
 			</div>
