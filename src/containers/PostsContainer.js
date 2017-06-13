@@ -12,7 +12,8 @@ class PostsContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			posts: []
+			posts: [],
+			groupname: 'sss'
 		};
 
 
@@ -110,6 +111,7 @@ class PostsContainer extends Component {
 			<div className="posts-container-main">	
 				<PostsList
 					posts={this.state.posts}
+					groupname={this.state.groupname}
 					onPostDelete={this.handlePostDelete}
 					onPostUpdate={this.handlePostUpdate}/>
        		</div>

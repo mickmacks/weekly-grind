@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { firebase } from '../index.js'
 
-class Hero extends Component {
+class GroupHeader extends Component {
 
 	render() {
 
@@ -20,4 +20,4 @@ class Hero extends Component {
 	}
 }
 
-export default Hero;
+export default GroupHeader;

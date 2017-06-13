@@ -7,7 +7,8 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null,
+      currUserName: null,
+      currUserImage: '',
       loggedIn: false
     }
     this.loginButtonClicked = this.loginButtonClicked.bind(this)
@@ -18,15 +19,20 @@ class Nav extends Component {
   componentWillMount() {
     auth.onAuthStateChanged(currentUser => {
       if (currentUser) {
-        console.log('Logged in:', currentUser);
-        // set currentUser in App component state
-        this.setState({ currentUser });
-        // currentUserData=currentUser;
-        // console.log(currentUserData);
-        console.log(this.state, "logging");
+
+        this.setState({ 
+          currUserName: currentUser.displayName,
+          currUserImage: currentUser.photoURL
+         });
+        document.getElementById('userImage').style.display = 'inline-block'
+
       } else {
-        this.setState({ currentUser: null });
+        this.setState({ 
+          currUserName: null,
+          currUserImage: '' });
+        document.getElementById('userImage').style.display = 'none'
       }
+
     })
   }
 
@@ -48,34 +54,20 @@ class Nav extends Component {
     console.log("signing out");
     auth.signOut();
     document.getElementById('logout').style.display = 'none'
-    document.getElementById('login').style.display = 'inline-block' 
-
+    document.getElementById('login').style.display = 'inline-block'
   }
 
   render() {
     return(
 
-      <nav>
-        <a href="http://localhost:3001"><h4>WeeklyGrind</h4></a>
-
-        <ul>
-
-          <li id="login">
-            <a onClick={this.loginButtonClicked}>
-              Login
-            </a>
-          </li>
-
-          <li id="logout">
-            <a onClick={this.logoutButtonClicked}>
-              Logout
-            </a>
-          </li>
-
-          <li id="userName">{this.state.currentUser && this.state.currentUser.displayName}</li>
-
-
-        </ul>
+      <nav className="nav-down">
+        <a href="http://localhost:3000"><h4>WeeklyGrind</h4></a>
+       
+        <div id="authentication">    
+         <a id="login" onClick={this.loginButtonClicked}>Login</a>
+         <a id="logout" onClick={this.logoutButtonClicked}>Logout</a>
+         <img id="userImage" src={this.state.currUserImage} />
+        </div> 
       </nav>
 
     )

@@ -3,6 +3,25 @@ import Post from '../components/Post'
 
 class PostsList extends Component {
 
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
+	
+	componentDidUpdate() {
+
+		console.log("this.props is:", this.props.groupname)
+
+		if (this.props.groupname !== '') {
+
+		console.log(document.getElementsByClassName('posts-list-title'))
+
+		document.getElementsByClassName('posts-list-title').innerHTML = this.props.groupname + "'s Posts"
+
+		}
+
+	}	
+
 	render() {
 
 		let postsArray = this.props.posts.map( (post) => {
