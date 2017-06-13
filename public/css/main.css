@@ -113,6 +113,39 @@ nav a h4 {
 
 }
 
+nav button {
+
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  outline: none;
+  position: relative;
+  border-radius: 40px;
+  border: 1px solid #fff;
+  color: #fff;
+  margin-left: 20px;
+  float: left;
+
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+
+}
+
+nav button:hover, button:active {
+
+  color: #E87658;
+  background: #fff;
+
+}
+
 .nav-up {
     top: -80px;
 }
@@ -120,14 +153,15 @@ nav a h4 {
 #authentication {
 
   float: right;
-
+  width: 200px;
+  right: 90px;
+  position: absolute;
 
 }
 
 #authentication a {
 
   margin: auto;
-  float: right;
 
 }
 

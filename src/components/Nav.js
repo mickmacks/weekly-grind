@@ -24,13 +24,17 @@ class Nav extends Component {
           currUserName: currentUser.displayName,
           currUserImage: currentUser.photoURL
          });
-        document.getElementById('userImage').style.display = 'inline-block'
+        document.getElementById('userImage').style.display = 'inline-block';
+        document.getElementById('logout').style.display = 'inline-block'
+        document.getElementById('login').style.display = 'none'
 
       } else {
         this.setState({ 
           currUserName: null,
           currUserImage: '' });
         document.getElementById('userImage').style.display = 'none'
+        document.getElementById('login').style.display = 'inline-block' 
+        document.getElementById('logout').style.display = 'none'
       }
 
     })
@@ -43,8 +47,7 @@ class Nav extends Component {
     console.log("signing in")
     // tell Firebase auth to log in with a popup and that provider
     auth.signInWithPopup(provider);
-    document.getElementById('login').style.display = 'none' 
-    document.getElementById('logout').style.display = 'inline-block'
+
 
   }
 
@@ -53,8 +56,6 @@ class Nav extends Component {
     // tell Firebase auth to log out
     console.log("signing out");
     auth.signOut();
-    document.getElementById('logout').style.display = 'none'
-    document.getElementById('login').style.display = 'inline-block'
   }
 
   render() {
@@ -64,8 +65,8 @@ class Nav extends Component {
         <a href="http://localhost:3000"><h4>WeeklyGrind</h4></a>
        
         <div id="authentication">    
-         <a id="login" onClick={this.loginButtonClicked}>Login</a>
-         <a id="logout" onClick={this.logoutButtonClicked}>Logout</a>
+         <button id="login" onClick={this.loginButtonClicked}>Login</button>
+         <button id="logout" onClick={this.logoutButtonClicked}>Logout</button>
          <img id="userImage" src={this.state.currUserImage} />
         </div> 
       </nav>
