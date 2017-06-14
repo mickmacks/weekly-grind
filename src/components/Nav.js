@@ -43,7 +43,6 @@ class Nav extends Component {
                     location: 'San Francisco, CA',
                     password: 'password',
                     userImage: currentUser.photoURL,
-                    groups: []
 
             })
           }
@@ -56,8 +55,9 @@ class Nav extends Component {
       } else {
 
         this.setState({ 
-          currUserName: null,
-          currUserImage: null 
+          currentUser: null,
+          currUserName: '',
+          currUserImage: '' 
         });
 
         document.getElementById('userImage').style.display = 'none';
@@ -88,12 +88,15 @@ class Nav extends Component {
     let welcomeMessage = "Weekly Grind is a community for growing creative minds. No rules, no limits."
 
     document.getElementById('intro').innerHTML = welcomeMessage;
-    document.getElementById('hero-signup-btn').innerHTML = 'Sign Up';
+    document.getElementById('primary-btn').style.display = 'block';
+    document.getElementById('primary-btn').innerHTML = 'Sign Up';
   }
 
   render() {
 
-      if (this.state.currUser) {
+      if (this.state.currentUser == null) {
+
+
 
         return(
 
@@ -111,8 +114,8 @@ class Nav extends Component {
 
       else {
 
-      // document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
-      // document.getElementById('hero-signup-btn').style.display = 'none';
+      document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
+      document.getElementById('primary-btn').style.display = 'none';
 
       let formattedName = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
       let groupsURL = '/user/' + formattedName + '/groups'

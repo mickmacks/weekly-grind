@@ -4,13 +4,16 @@ class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user_id: '',
       image: '',
-      user: '',
-      occupation: '',
-      text: '',
-      date: Date,
-      userID: '',
-      city: ''
+      title: '',
+      body: '',
+      createdAt: Date,
+      updatedAt: '',
+      groupname: '',
+      likesCount: '1',
+      likedBy: []
+
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
