@@ -8,7 +8,7 @@ class Nav extends Component {
     super(props);
     this.state = {
       currUserName: null,
-      currUserImage: '',
+      currUserImage: null,
       loggedIn: false
     }
     this.loginButtonClicked = this.loginButtonClicked.bind(this)
@@ -41,7 +41,8 @@ class Nav extends Component {
                     name: currentUser.displayName,
                     location: 'San Francisco, CA',
                     password: 'password',
-                    userImage: currentUser.photoURL
+                    userImage: currentUser.photoURL,
+                    groups: []
 
             })
           }
@@ -50,21 +51,18 @@ class Nav extends Component {
         document.getElementById('userImage').style.display = 'inline-block';
         document.getElementById('logout').style.display = 'inline-block';
         document.getElementById('login').style.display = 'none';
-        document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
-        document.getElementById('hero-signup-btn').innerHTML = 'My Groups';
 
       } else {
+
         this.setState({ 
           currUserName: null,
-          currUserImage: '' });
+          currUserImage: null 
+        });
+
         document.getElementById('userImage').style.display = 'none';
         document.getElementById('login').style.display = 'inline-block';
         document.getElementById('logout').style.display = 'none';
         
-        let welcomeMessage = "Weekly Grind is a community for growing creative minds. No rules, no limits."
-
-        document.getElementById('intro').innerHTML = welcomeMessage;
-        document.getElementById('hero-signup-btn').innerHTML = 'Sign Up';
       }
 
     })
@@ -86,6 +84,11 @@ class Nav extends Component {
     // tell Firebase auth to log out
     console.log("signing out");
     auth.signOut();
+
+    let welcomeMessage = "Weekly Grind is a community for growing creative minds. No rules, no limits."
+
+    document.getElementById('intro').innerHTML = welcomeMessage;
+    document.getElementById('hero-signup-btn').innerHTML = 'Sign Up';
   }
 
   render() {
@@ -108,6 +111,9 @@ class Nav extends Component {
 
     else {
 
+      document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
+      document.getElementById('hero-signup-btn').style.display = 'none';
+
       let formattedName = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
       let groupsURL = '/user/' + formattedName + '/groups'
 
@@ -117,7 +123,7 @@ class Nav extends Component {
           <a href="/"><h4>WeeklyGrind</h4></a>
          
           <div id="authentication">
-           <a href={groupsURL}>Groups</a>
+           <button><a href={groupsURL}>Groups</a></button>
            <button id="logout" onClick={this.logoutButtonClicked}>Logout</button>
            <img id="userImage" src={this.state.currUserImage} />
           </div> 
