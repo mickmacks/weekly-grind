@@ -5,6 +5,10 @@ import PostsContainer from '../containers/PostsContainer'
 import Footer from '../components/Footer'
 
 class Home extends Component {
+
+  
+
+  
   render() {
     return (
     <div>
@@ -12,7 +16,7 @@ class Home extends Component {
     	<Hero />
     	<PostsContainer />
 		  <Footer />
-	</div>
+	   </div>
     )
   }
 }

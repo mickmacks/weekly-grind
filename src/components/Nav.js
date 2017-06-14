@@ -76,7 +76,6 @@ class Nav extends Component {
     // tell Firebase auth to log in with a popup and that provider
     auth.signInWithPopup(provider);
 
-
   }
 
   logoutButtonClicked(e) {
