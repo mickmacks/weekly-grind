@@ -126,20 +126,26 @@ nav button {
   background: none;
   cursor: pointer;
   padding: 10px 15px;
-  display: inline-block;
+  display: block;
   text-transform: uppercase;
   letter-spacing: 2px;
   outline: none;
   position: relative;
   border-radius: 40px;
   border: 1px solid #fff;
-  color: #fff;
   margin-left: 20px;
   float: left;
 
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
+
+}
+
+button a {
+
+  color: #fff;
+  text-decoration: none;
 
 }
 
@@ -157,7 +163,7 @@ nav button:hover, button:active {
 #authentication {
 
   float: right;
-  width: 200px;
+  width: 300px;
   right: 90px;
   position: absolute;
 

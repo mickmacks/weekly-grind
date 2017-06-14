@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { auth, firebase } from '../index.js'
+import { auth, firebase, fb } from '../index.js'
 
 // import { Link } from 'react-router-dom'
 class Nav extends Component {
@@ -24,6 +24,29 @@ class Nav extends Component {
           currUserName: currentUser.displayName,
           currUserImage: currentUser.photoURL
          });
+
+        // var newPassword = getASecureRandomPassword()
+
+        const usersRef = fb.child('users');
+        let username = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
+
+        usersRef.child("users").child(username).equalTo(username).once("value", function(snapshot) {
+        var userData = snapshot.val();
+          if (!userData){
+
+            usersRef.child(username).set({
+                  
+                    uid: currentUser.uid,
+                    email: currentUser.email,
+                    name: currentUser.displayName,
+                    location: 'San Francisco, CA',
+                    password: 'password',
+                    userImage: currentUser.photoURL
+
+            })
+          }
+        });
+
         document.getElementById('userImage').style.display = 'inline-block';
         document.getElementById('logout').style.display = 'inline-block';
         document.getElementById('login').style.display = 'none';
@@ -66,19 +89,43 @@ class Nav extends Component {
   }
 
   render() {
-    return(
 
-      <nav className="nav-down">
-        <a href="http://localhost:3000"><h4>WeeklyGrind</h4></a>
-       
-        <div id="authentication">    
-         <button id="login" onClick={this.loginButtonClicked}>Login</button>
-         <button id="logout" onClick={this.logoutButtonClicked}>Logout</button>
-         <img id="userImage" src={this.state.currUserImage} />
-        </div> 
-      </nav>
+    if (this.state.currUserName === null) {
 
-    )
+      return(
+
+        <nav className="nav-down">
+          <a href="/"><h4>WeeklyGrind</h4></a>
+         
+          <div id="authentication">    
+           <button id="login" onClick={this.loginButtonClicked}>Join / Login</button>
+          </div> 
+        </nav>
+
+      )
+
+    }
+
+    else {
+
+      let formattedName = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
+      let groupsURL = '/user/' + formattedName + '/groups'
+
+      return(
+
+        <nav className="nav-down">
+          <a href="/"><h4>WeeklyGrind</h4></a>
+         
+          <div id="authentication">
+           <a href={groupsURL}>Groups</a>
+           <button id="logout" onClick={this.logoutButtonClicked}>Logout</button>
+           <img id="userImage" src={this.state.currUserImage} />
+          </div> 
+        </nav>
+
+      )
+
+    }
   }
 }
 
