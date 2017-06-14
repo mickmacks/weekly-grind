@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Post from '../components/Post'
+import Group from '../components/Group'
 
-class PostsList extends Component {
+class GroupsList extends Component {
 
 	constructor(props) {
 		super(props);
@@ -11,12 +11,10 @@ class PostsList extends Component {
 	componentDidUpdate() {
 
 		console.log("this.props is:", this.props.groupname)
-
 		if (this.props.groupname !== '') {
 
-		console.log(document.getElementsByClassName('posts-list-title'))
-
-		document.getElementsByClassName('posts-list-title').innerHTML = this.props.groupname + "'s Posts"
+			console.log(document.getElementsByClassName('groups-list-title'))
+			document.getElementsByClassName('groups-list-title').innerHTML = this.props.groupname + "'s Posts"
 
 		}
 
@@ -24,28 +22,30 @@ class PostsList extends Component {
 
 	render() {
 
-		let postsArray = this.props.posts.map( (post) => {
+		console.log("this.props.group is: ", this.props.group )
+
+		let groupsArray = this.props.groups.map( (group) => {
 
 			return (
-				<Post
-					key={[post._id]}
-					uniqueId={[post._id]}
-					post={post}
-					className="postCard" />
+				<Group
+					key={group._id}
+					uniqueId={group._id}
+					group={group}
+					className="groupCard" />
 			)
 		})
 
 		return(
 
-			<div className="posts-list-container">
-				<h1 className="posts-list-title">Groupname's Posts</h1>
+			<div className="groups-list-container">
+				<h1 className="groups-list-title">My Groups</h1>
 
-				<div className="posts-list-items">
-					{postsArray}
+				<div className="groups-list-items">
+					{groupsArray}
 				</div>
 			</div>
 		)
 	}
 }
 
-export default PostsList;
+export default GroupsList;

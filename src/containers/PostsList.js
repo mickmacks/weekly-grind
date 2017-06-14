@@ -8,28 +8,14 @@ class PostsList extends Component {
 		this.state = {};
 	}
 	
-	componentDidUpdate() {
-
-		console.log("this.props is:", this.props.groupname)
-
-		if (this.props.groupname !== '') {
-
-		console.log(document.getElementsByClassName('posts-list-title'))
-
-		document.getElementsByClassName('posts-list-title').innerHTML = this.props.groupname + "'s Posts"
-
-		}
-
-	}	
-
 	render() {
 
 		let postsArray = this.props.posts.map( (post) => {
 
 			return (
 				<Post
-					key={[post._id]}
-					uniqueId={[post._id]}
+					key={post._id}
+					uniqueId={post._id}
 					post={post}
 					className="postCard" />
 			)

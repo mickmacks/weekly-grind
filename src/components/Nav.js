@@ -25,16 +25,23 @@ class Nav extends Component {
           currUserImage: currentUser.photoURL
          });
         document.getElementById('userImage').style.display = 'inline-block';
-        document.getElementById('logout').style.display = 'inline-block'
-        document.getElementById('login').style.display = 'none'
+        document.getElementById('logout').style.display = 'inline-block';
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
+        document.getElementById('hero-signup-btn').innerHTML = 'My Groups';
 
       } else {
         this.setState({ 
           currUserName: null,
           currUserImage: '' });
-        document.getElementById('userImage').style.display = 'none'
-        document.getElementById('login').style.display = 'inline-block' 
-        document.getElementById('logout').style.display = 'none'
+        document.getElementById('userImage').style.display = 'none';
+        document.getElementById('login').style.display = 'inline-block';
+        document.getElementById('logout').style.display = 'none';
+        
+        let welcomeMessage = "Weekly Grind is a community for growing creative minds. No rules, no limits."
+
+        document.getElementById('intro').innerHTML = welcomeMessage;
+        document.getElementById('hero-signup-btn').innerHTML = 'Sign Up';
       }
 
     })

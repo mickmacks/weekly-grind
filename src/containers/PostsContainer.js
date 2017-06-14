@@ -4,8 +4,6 @@ import $ from 'jquery-ajax';
 
 import PostsList from './PostsList'
 import Post from '../components/Post'
-import ModalForm from '../components/ModalForm'
-
 
 class PostsContainer extends Component {
 
@@ -13,10 +11,7 @@ class PostsContainer extends Component {
 		super(props);
 		this.state = {
 			posts: [],
-			groupname: 'sss'
 		};
-
-
 
 		this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
 	// 	this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
@@ -28,16 +23,16 @@ class PostsContainer extends Component {
 
 	loadPostsFromServer(){
 
-    const postsRef = fb.child('posts');
-    console.log('posts from postscontainer is:', postsRef)
-    // 'on' method synchronizes data in real time
-    // attach it onto a reference that points to a place in the database
-    // so when the database makes a change, make that update to our react state in real time
-    postsRef.on('value', snap => {
-        this.setState({
-          posts: snap.val()
-        })
-    })
+	    const postsRef = fb.child('posts');
+	    console.log('posts from postscontainer is:', postsRef)
+	    // 'on' method synchronizes data in real time
+	    // attach it onto a reference that points to a place in the database
+	    // so when the database makes a change, make that update to our react state in real time
+	    postsRef.on('value', snap => {
+	        this.setState({
+	          posts: snap.val()
+	        })
+	    })
 
   	}
 
@@ -111,7 +106,6 @@ class PostsContainer extends Component {
 			<div className="posts-container-main">	
 				<PostsList
 					posts={this.state.posts}
-					groupname={this.state.groupname}
 					onPostDelete={this.handlePostDelete}
 					onPostUpdate={this.handlePostUpdate}/>
        		</div>

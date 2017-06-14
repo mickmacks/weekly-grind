@@ -11,8 +11,8 @@ class Groups extends Component {
     	<Nav />
     	<GroupHeader />
     	<GroupsContainer />
-		<Footer />
-	</div>
+		  <Footer />
+    </div>
     )
   }
 }

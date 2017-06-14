@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 
-class ModalForm extends Component {
+class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userIMG: '',
+      userImage: '',
       user: '',
-      title: '',
+      occupation: '',
       text: '',
       date: Date,
       userID: '',
@@ -18,16 +18,16 @@ class ModalForm extends Component {
 
   handleInputChange(e) {
 
-  	if (e.target.name === 'userIMG') {
-  		this.setState({ userIMG: e.target.value });
+  	if (e.target.name === 'userImage') {
+  		this.setState({ userImage: e.target.value });
   	}
 
   	if (e.target.name === 'user') {
   		this.setState({ user: e.target.value });
   	}
 
-  	if (e.target.name === 'title') {
-  		this.setState({ title: e.target.value });
+  	if (e.target.name === 'occupation') {
+  		this.setState({ occupation: e.target.value });
   	}
 
   	if (e.target.name === 'text') {
@@ -48,9 +48,9 @@ class ModalForm extends Component {
 
     e.preventDefault();
     //we will be tying this into the POST method in a bit
-    let userIMG = this.state.userIMG.trim();
+    let userImage = this.state.userImage.trim();
     let user = this.state.user.trim();
-    let title = this.state.title.trim();
+    let occupation = this.state.occupation.trim();
     let text = this.state.text.trim();
     let date = this.state.date;
     let userID = this.state.userID.trim();
@@ -58,21 +58,21 @@ class ModalForm extends Component {
 
 
 
-    if (!userIMG || !user || !title || !text || !date || !userID ) {
+    if (!userImage || !user || !occupation || !text || !date || !userID ) {
       return;
     }
     this.props.onModalFormSubmit(
-    {	userIMG: userIMG,
+    {	userImage: userImage,
     	user: user,
-    	title: title,
+    	occupation: occupation,
     	text: text,
       date: Date,
       userID: userID,
     });
     this.setState(
-    {	userIMG: userIMG,
+    {	userImage: userImage,
     	user: user,
-    	title: title,
+    	occupation: occupation,
     	text: text,
       date: Date,
       userID: userID,
@@ -84,24 +84,26 @@ class ModalForm extends Component {
   render() {
     return (
 
-	    <form onSubmit={ this.handleNewPostSubmit }>
+	    <div className="form-container">
+  
+        <form onSubmit={ this.handleNewPostSubmit }>
 	        <input
 	          type='text'
-	          name='userIMG'
-	          placeholder='Link to your profile image…'
-	          value={ this.state.userIMG }
+	          name='firstName'
+	          placeholder='Enter your first name…'
+	          value={ this.state.userImage }
 	          onChange={ this.handleInputChange } />
 	        <input
 	          type='text'
-	          name='user'
-	          placeholder='Enter your name…'
+	          name='lastName'
+	          placeholder='Enter your last name…'
 	          value={ this.state.user }
 	          onChange={ this.handleInputChange } />
 	        <input
 	          type='text'
-	          name='title'
-	          placeholder='Choose a Title…'
-	          value={ this.state.title }
+	          name='occupation'
+	          placeholder='Choose a occupation…'
+	          value={ this.state.occupation }
 	          onChange={ this.handleInputChange } />
 	        <input
 	          type='text'
@@ -124,11 +126,13 @@ class ModalForm extends Component {
             name='city'
             value={ this.props.city } />
 	        <input
+            className='submit-button'
 	          type='submit'
 	          value='Post' />
-	    </form>
+	     </form>
+      </div>
     )
   }
 }
 
-export default ModalForm;
+export default SignUpForm;

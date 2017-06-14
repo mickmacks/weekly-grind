@@ -11,13 +11,13 @@ class Group extends Component {
 			location: ''
 		};
 
-		this.getUser = this.getUser.bind(this);
+		this.getUserGroups = this.getUserGroups.bind(this);
 	}
 
-	getUser() {
+	getUserGroups() {
 
 		let usersRef = fb.child('users');
-		let userId = this.props.post.user_id
+		let userId = this.props.group.user_id
 
 		usersRef.orderByChild('_id').equalTo(userId).on("value", snap => {
 			
@@ -39,24 +39,24 @@ class Group extends Component {
 	}
 
 	componentWillMount() {
-		this.getUser()
+		this.getUserGroups()
 	}	
 
 	render() {
 
 		return(
 
-			<div className="post-card">
-				<div className="post-image">
-					<img src={this.props.post.image}></img>
+			<div className="group-card">
+				<div className="group-image">
+					<img src={this.props.group.image}></img>
 				</div>
-				<div className="post-info">
-					<img className="post-info-profile" src={this.state.userImage} alt={this.state.username}/>
-					<div className="post-info-user">
-						<h3 className="post-info-username">{this.state.username}</h3>
-						<h4 className="post-info-location">{this.state.location}</h4>
+				<div className="group-info">
+					<img className="group-info-profile" src={this.state.userImage} alt={this.state.username}/>
+					<div className="group-info-user">
+						<h3 className="group-info-username">{this.state.username}</h3>
+						<h4 className="group-info-location">{this.state.location}</h4>
 					</div>
-					<h5 className="post-likes-count"><img src="./images/heart.png" /> {this.props.post.likesCount}</h5>
+					<h5 className="group-likes-count"><img src="./images/heart.png" /> {this.props.group.likesCount}</h5>
 				</div>
 			</div>
 		)

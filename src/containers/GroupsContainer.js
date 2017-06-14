@@ -4,7 +4,6 @@ import $ from 'jquery-ajax';
 
 import GroupsList from './GroupsList'
 import Group from '../components/Group'
-import ModalForm from '../components/ModalForm'
 
 
 class GroupsContainer extends Component {
@@ -12,80 +11,78 @@ class GroupsContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			posts: [],
-			groupname: 'sss'
+			groups: [],
 		};
 
 
 
-		this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
-	// 	this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
-	// 	//this.handlePostSubmit = this.handlePostSubmit.bind(this);
-	// 	// this.handlePostDelete = this.handlePosttDelete.bind(this);
-	// 	// this.handlePostUpdate = this.handlePostUpdate.bind(this);
+		this.loadGroupsFromServer = this.loadGroupsFromServer.bind(this);
+	// 	this.handleNewGroupSubmit = this.handleNewGroupSubmit.bind(this);
+	// 	//this.handleGroupSubmit = this.handleGroupSubmit.bind(this);
+	// 	// this.handleGroupDelete = this.handleGrouptDelete.bind(this);
+	// 	// this.handleGroupUpdate = this.handleGroupUpdate.bind(this);
 
 	}
 
-	loadPostsFromServer(){
+	loadGroupsFromServer(){
 
-    const postsRef = fb.child('posts');
-    console.log('posts from postscontainer is:', postsRef)
-    // 'on' method synchronizes data in real time
-    // attach it onto a reference that points to a place in the database
-    // so when the database makes a change, make that update to our react state in real time
-    postsRef.on('value', snap => {
-        this.setState({
-          posts: snap.val()
-        })
-    })
+	    const groupsRef = fb.child('groups');
+
+	    groupsRef.on('value', snap => {
+	        this.setState({
+	          groups: snap.val()
+	        })
+	    })
+
+	    console.log(this.state.groups)
 
   	}
 
-	handleNewPostSubmit(post){
+	handleNewGroupSubmit(group){
 
-		// post.city = this.props.routeParams.cityId;
+		// group.city = this.props.routeParams.cityId;
 
-		// console.log('reached handleNewPostSubmit');
-		// let posts = this.state.posts;
-		// console.log('posts is: ', posts);
-		// let newPost = posts.concat([post]);
-		// console.log('newPost is: ', newPost)
-		// this.setState({posts: newPost});
-		// // use this once posts' data route is confirmed
-		// //url: 'http://localhost:3000/api/cities/:cityId/posts'
+		// console.log('reached handleNewGroupSubmit');
+		// let groups = this.state.groups;
+		// console.log('groups is: ', groups);
+		// let newGroup = groups.concat([group]);
+		// console.log('newGroup is: ', newGroup)
+		// this.setState({groups: newGroup});
+		// // use this once groups' data route is confirmed
+		// //url: 'http://localhost:3000/api/cities/:cityId/groups'
 
 		// $.ajax({
 		// 	method: 'POST',
-		// 	url: `http://localhost:3000/api/cities/${this.props.routeParams.cityId}/posts/`,
-		// 	data: post
+		// 	url: `http://localhost:3000/api/cities/${this.props.routeParams.cityId}/groups/`,
+		// 	data: group
 		// })
 		// .then(res => {
 		// 	console.log('res is: ', res)
 		// }, err => {
 		// 	console.error(err);
-		// 	this.setState({posts: posts});
+		// 	this.setState({groups: groups});
 		// });
 	}
 
-	handlePostDelete(id){
+	handleGroupDelete(id){
 	 //    $.ajax({
 	 //      method: 'DELETE',
-	 //      url: 'http://localhost:3000/api/cities/:cityId/posts/:postId'
+	 //      url: 'http://localhost:3000/api/cities/:cityId/groups/:groupId'
 
 	//     })
 	//     .then((res) => {
-	//       console.log('Post deleted');
+	//       console.log('Group deleted');
 	//     }, (err) => {
 	//       console.error(err);
 	//     });
 	}
 
-    handlePostUpdate(id, post) {
-    //sends the posts id and new text to our api
+    handleGroupUpdate(id, group) {
+    //sends the groups id and new text to our api
     // $.ajax({
     //   method: 'PUT',
-    //   url:'http://localhost:3000/api/cities/:cityId/posts/:postId' ,
-    //   data: post
+    //   url:'http://localhost:3000/api/cities/:cityId/groups/:groupId' ,
+    //   data: group
     // })
     // .then(res => {
     //   console.log(res);
@@ -95,25 +92,20 @@ class GroupsContainer extends Component {
   }
 
   componentDidMount() {
-    this.loadPostsFromServer();
-    // setInterval(this.loadPostsFromServer, this.props.pollInterval);
+    this.loadGroupsFromServer();
+    console.log("load groups: this.state.groups is: ", this.state.groups)
   }
 
 
 	render() {
 
-		// const testPost = this.state.posts[0]
-
-		// console.log('targetPost is: ', testPost)
-
 		return(
 
-			<div className="posts-container-main">	
+			<div className="groups-container-main">	
 				<GroupsList
-					posts={this.state.posts}
-					groupname={this.state.groupname}
-					onPostDelete={this.handlePostDelete}
-					onPostUpdate={this.handlePostUpdate}/>
+					groups={this.state.groups}
+					onGroupDelete={this.handleGroupDelete}
+					onGroupUpdate={this.handleGroupUpdate}/>
        		</div>
 		)
 	}

@@ -12,7 +12,7 @@
 			"password": "password",
 			"occupation": "Illustrator",
 			"location": "San Francisco",
-			"groups": ["00010001"],
+			"groups": ["00010001", "00010002"],
 			"posts": ["00001111"]
 		},
 		"00000002":{
@@ -25,7 +25,7 @@
 			"password": "password",
 			"occupation": "Designer",
 			"location": "Oakland",
-			"groups": ["00010001"],
+			"groups": ["00010001", "00010002"],
 			"posts": ["00001112"]
 		},
 		"00000003":{
@@ -38,7 +38,7 @@
 			"password": "password",
 			"occupation": "Developer",
 			"location": "San Jose",
-			"groups": ["00010001"],
+			"groups": ["00010001", "00010002"],
 			"posts": []
 		},
 		"00000004":{
@@ -85,13 +85,13 @@
 
 	"groups": {
 
-		"Sketch Club":{
+		"0":{
 			"_id": "00010001",
 			"name": "Sketch Club",
 			"heroImage": "http://www.unsplash.it/1500",
 			"logo": "http://www.unsplash.it/1500",
 			"nextMeet": "23rd June 2017, 10:12:14 AM",
-			"location": "san francisco",
+			"location": "San Francisco, CA",
 			"password": "password",
 
 			"admins": [
@@ -107,7 +107,31 @@
 			],
 			"posts": [
 				"00001111",
-				"00001112"
+				"00001112",
+				"00001113"
+			]			
+		},
+		"1":{
+			"_id": "00010002",
+			"name": "Portrait Artists",
+			"heroImage": "http://www.unsplash.it/1512",
+			"logo": "http://www.unsplash.it/1515",
+			"nextMeet": "23rd June 2017, 10:12:14 AM",
+			"location": "Oakland, CA",
+			"password": "password",
+
+			"admins": [
+				"00000002"
+			],
+			"users": [ 
+				"00000001",
+				"00000002",
+				"00000003"
+			],
+			"posts": [
+				"00001114",
+				"00001115",
+				"00001116"
 			]			
 		}
 

@@ -14,6 +14,8 @@ class Post extends Component {
 		this.getUser = this.getUser.bind(this);
 	}
 
+	// this.props.uniqueId to send post id back to container crud function
+
 	getUser() {
 
 		let usersRef = fb.child('users');
