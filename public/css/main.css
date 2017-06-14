@@ -267,20 +267,20 @@ button a:hover, button a:active {
 
 /*   Posts   */
 
-.groups-container-main {
+.posts-container-main {
 
   background-color: #F2F2ED;
   text-align: center;
 
 }
 
-.groups-container-main h1 {
+.posts-container-main h1 {
 
   padding: 40px 0px 10px 0px;
 
 }
 
-.groups-list-items {
+.posts-list-items {
 
   /*display: flex;*/
   grid-template-columns: 1fr 1fr 1fr;
