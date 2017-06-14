@@ -24,7 +24,7 @@ class PostsList extends Component {
 		return(
 
 			<div className="posts-list-container">
-				<h1 className="posts-list-title">Popular Posts</h1>
+				<h1 className="posts-list-title">{this.props.title}</h1>
 
 				<div className="posts-list-items">
 					{postsArray}

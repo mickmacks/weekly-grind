@@ -38,11 +38,14 @@ class Group extends Component {
 
 	}
 
-	componentWillMount() {
-		this.getUserGroups()
-	}	
+
 
 	render() {
+
+		var groupname = this.props.group.name.toLowerCase().replace(/\s+/g, '')
+
+		var groupURL = window.location.href + "/" + groupname
+
 
 		return(
 
@@ -51,7 +54,7 @@ class Group extends Component {
 					<img src={this.props.group.heroImage}></img>
 				</div>
 				<div className="group-info">
-					<h3 className="group-info-name">{this.props.group.name}</h3>
+					<a href={groupURL}><h3 className="group-info-name">{this.props.group.name}</h3></a>
 					<p className="group-info-description">{this.props.group.description}</p>
 					<h4 className="group-info-location">{this.props.group.location}</h4>
 					<h5 className="group-info-users">Members: {this.props.group.users.length}</h5>

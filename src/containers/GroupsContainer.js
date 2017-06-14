@@ -106,7 +106,9 @@ class GroupsContainer extends Component {
 					groups={this.state.groups}
 					onGroupDelete={this.handleGroupDelete}
 					onGroupUpdate={this.handleGroupUpdate}/>
+					<button id="secondary-btn"><a href="/signup">NEW GROUP</a></button>
        		</div>
+
 		)
 	}
 }

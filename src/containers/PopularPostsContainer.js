@@ -4,15 +4,14 @@ import $ from 'jquery-ajax';
 
 import PostsList from './PostsList'
 import Post from '../components/Post'
-import PostForm from '../components/PostForm'
 
-class PostsContainer extends Component {
+class PopularPostsContainer extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			posts: [],
-			title: 'Recent Posts'
+			title: 'Popular Posts'
 		};
 
 		this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
@@ -26,7 +25,7 @@ class PostsContainer extends Component {
 	loadPostsFromServer(){
 
 	    const postsRef = fb.child('posts');
-	    console.log('posts from postscontainer is:', postsRef)
+	    console.log('posts from Popularpostscontainer is:', postsRef)
 	    // 'on' method synchronizes data in real time
 	    // attach it onto a reference that points to a place in the database
 	    // so when the database makes a change, make that update to our react state in real time
@@ -106,24 +105,14 @@ class PostsContainer extends Component {
 		return(
 
 			<div className="posts-container-main">	
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
 				<PostsList
 					posts={this.state.posts}
 					title={this.state.title}
 					onPostDelete={this.handlePostDelete}
 					onPostUpdate={this.handlePostUpdate}/>
-				<button id="secondary-btn"><a href="/signup">NEW POST</a></button>
-				<div className="posts-form-container">
-					<PostForm />
-				</div>
-
        		</div>
 		)
 	}
 }
 
-export default PostsContainer;
+export default PopularPostsContainer;

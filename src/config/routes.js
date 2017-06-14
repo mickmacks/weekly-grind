@@ -14,7 +14,7 @@ var ReactRoutes = (
   		<Route path='/signup' component={SignUp} />
   		<Route path='/user/:username' component={Profile} />
   		<Route path='/user/:username/groups' component={Groups} />
-  		<Route path='/groups/:groupname' component={GroupDetail} />
+  		<Route path='/user/:username/groups/:groupname' component={GroupDetail} />
 
 	</div>
 )

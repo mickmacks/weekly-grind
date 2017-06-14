@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import { auth, firebase, fb } from '../index.js'
 
-// import { Link } from 'react-router-dom'
 class Nav extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      currUserName: null,
-      currUserImage: null,
+      currentUser: null,
+      currUserName: '',
+      currUserImage: '',
       loggedIn: false
     }
     this.loginButtonClicked = this.loginButtonClicked.bind(this)
@@ -21,6 +21,7 @@ class Nav extends Component {
       if (currentUser) {
 
         this.setState({ 
+          currentUser: currentUser,
           currUserName: currentUser.displayName,
           currUserImage: currentUser.photoURL
          });
@@ -92,26 +93,26 @@ class Nav extends Component {
 
   render() {
 
-    if (this.state.currUserName === null) {
+      if (this.state.currUser) {
 
-      return(
+        return(
 
-        <nav className="nav-down">
-          <a href="/"><h4>WeeklyGrind</h4></a>
-         
-          <div id="authentication">    
-           <button id="login" onClick={this.loginButtonClicked}>Join / Login</button>
-          </div> 
-        </nav>
+          <nav className="nav-down">
+            <a href="/"><h4>WeeklyGrind</h4></a>
+           
+            <div id="authentication">    
+             <button id="login" onClick={this.loginButtonClicked}>Join / Login</button>
+            </div> 
+          </nav>
 
-      )
+        )
 
-    }
+      }
 
-    else {
+      else {
 
-      document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
-      document.getElementById('hero-signup-btn').style.display = 'none';
+      // document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
+      // document.getElementById('hero-signup-btn').style.display = 'none';
 
       let formattedName = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
       let groupsURL = '/user/' + formattedName + '/groups'
