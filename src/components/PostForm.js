@@ -52,33 +52,23 @@ class PostForm extends Component {
     e.preventDefault();
     //we will be tying this into the POST method in a bit
     let image = this.state.image.trim();
-    let user = this.state.user.trim();
-    let occupation = this.state.occupation.trim();
-    let text = this.state.text.trim();
-    let date = this.state.date;
-    let userID = this.state.userID.trim();
+    // let user = this.state.user.trim();
+    // let occupation = this.state.occupation.trim();
+    // let text = this.state.text.trim();
+    // let date = this.state.date;
+    // let userID = this.state.userID.trim();
 
 
+    // if (!image || !user || !occupation || !text || !date || !userID )
 
-
-    if (!image || !user || !occupation || !text || !date || !userID ) {
+    if (!image) {
       return;
     }
-    this.props.onModalFormSubmit(
-    {	image: image,
-    	user: user,
-    	occupation: occupation,
-    	text: text,
-      date: Date,
-      userID: userID,
+    this.props.onCreatePostFormSubmit(
+    {	image: image
     });
     this.setState(
-    {	image: image,
-    	user: user,
-    	occupation: occupation,
-    	text: text,
-      date: Date,
-      userID: userID,
+    {	image: image
     });
 
     console.log('logging this.state: ', this.state);
@@ -97,41 +87,9 @@ class PostForm extends Component {
 	          value={ this.state.image }
 	          onChange={ this.handleInputChange } />
 	        <input
-	          type='text'
-	          name='lastName'
-	          placeholder='Enter your last name…'
-	          value={ this.state.user }
-	          onChange={ this.handleInputChange } />
-	        <input
-	          type='text'
-	          name='occupation'
-	          placeholder='Choose a occupation…'
-	          value={ this.state.occupation }
-	          onChange={ this.handleInputChange } />
-	        <input
-	          type='text'
-	          name='text'
-	          placeholder='Write your Post.....'
-	          value={ this.state.text }
-	          onChange={ this.handleInputChange } />
-          <input
-            type='hidden'
-            name='date'
-            value={Date.now()} />
-	        <input
-	          type='text'
-	          name='userID'
-	          placeholder='firebase userID'
-	          value={ this.state.userID}
-	          onChange={ this.handleInputChange } />
-          <input
-            type='hidden'
-            name='city'
-            value={ this.props.city } />
-	        <input
             className='submit-button'
 	          type='submit'
-	          value='Post' />
+	          value='Create Post' />
 	     </form>
       </div>
     )

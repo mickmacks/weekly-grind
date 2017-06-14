@@ -69,7 +69,6 @@ h5 {
 
   margin: 40px;
 
-
 }
 
 /*   C O M P O N E N T S   */
@@ -191,7 +190,7 @@ nav button:hover, button:active {
 
 }
 
-button {
+button, .submit-button {
 
   font-family: 'Work Sans', sans-serif;
   font-weight: 400;
@@ -582,9 +581,8 @@ footer a {
 
   display: flex;
   width: 100%;
-  min-height: 700px;
   padding: 100px 0px;
-  background-color: #F2F2ED;
+  background-color: #EFEFDD;
   margin: 0;
 
 }
@@ -623,6 +621,13 @@ footer a {
 
 }
 
+.form-container .submit-button {
+
+  margin: 0px;
+  padding: 20px 0px;
+
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: white;
 }
@@ -648,8 +653,8 @@ textarea:focus, input:focus{
   color: inherit;
   background: none;
   cursor: pointer;
-  padding: 25px 50px;
-  margin: 50px 50% 0px 50%;
+  padding: 25px 0px;
+  margin: 40px 0px 0px 0px;
   width: 50%;
   display: inline-block;
   text-transform: uppercase;

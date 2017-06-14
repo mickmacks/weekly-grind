@@ -16,8 +16,8 @@ class PostsContainer extends Component {
 		};
 
 		this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
-	// 	this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
-	// 	//this.handlePostSubmit = this.handlePostSubmit.bind(this);
+		this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
+		// this.handlePostSubmit = this.handlePostSubmit.bind(this);
 	// 	// this.handlePostDelete = this.handlePosttDelete.bind(this);
 	// 	// this.handlePostUpdate = this.handlePostUpdate.bind(this);
 
@@ -62,6 +62,19 @@ class PostsContainer extends Component {
 		// 	console.error(err);
 		// 	this.setState({posts: posts});
 		// });
+
+		const postsRef = fb.child('posts');
+
+        // postsRef.child("posts").child(username).equalTo(username).once("value", function(snapshot) {
+        // var userData = snapshot.val();
+        //   if (!userData){
+
+            postsRef.child(post).set({
+                  
+                    image: post.image
+
+            })
+          
 	}
 
 	handlePostDelete(id){
@@ -115,10 +128,12 @@ class PostsContainer extends Component {
 					posts={this.state.posts}
 					title={this.state.title}
 					onPostDelete={this.handlePostDelete}
-					onPostUpdate={this.handlePostUpdate}/>
-				<button id="secondary-btn"><a href="/signup">NEW POST</a></button>
+					onPostUpdate={this.handlePostUpdate}
+				/>
 				<div className="posts-form-container">
-					<PostForm />
+					<PostForm 
+					onCreatePostFormSubmit={this.handleNewPostSubmit}					
+					/>
 				</div>
 
        		</div>
@@ -127,3 +142,6 @@ class PostsContainer extends Component {
 }
 
 export default PostsContainer;
+
+// <button id="secondary-btn"><a href="/signup">NEW POST</a></button>
+

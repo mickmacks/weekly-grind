@@ -73,9 +73,9 @@ class Nav extends Component {
     e.preventDefault();
     // set up provider
     const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
     console.log("signing in")
     // tell Firebase auth to log in with a popup and that provider
-    auth.signInWithPopup(provider);
 
   }
 
@@ -95,8 +95,6 @@ class Nav extends Component {
   render() {
 
       if (this.state.currentUser == null) {
-
-
 
         return(
 
