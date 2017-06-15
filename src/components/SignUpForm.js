@@ -6,8 +6,8 @@ class SignUpForm extends Component {
     this.state = {
       firstName: '',
       lastName: '',
-      occupation: '',
-      text: '',
+      password: '',
+      email: '',
       date: Date,
       userID: '',
       city: ''
@@ -28,12 +28,12 @@ class SignUpForm extends Component {
   		this.setState({ lastName: e.target.value });
   	}
 
-  	if (e.target.name === 'occupation') {
-  		this.setState({ occupation: e.target.value });
+  	if (e.target.name === 'password') {
+  		this.setState({ password: e.target.value });
   	}
 
-  	if (e.target.name === 'text') {
-  		this.setState({ text: e.target.value });
+  	if (e.target.name === 'email') {
+  		this.setState({ email: e.target.value });
   	}
 
   	if (e.target.name === 'date') {
@@ -52,30 +52,30 @@ class SignUpForm extends Component {
     //we will be tying this into the POST method in a bit
     let firstName = this.state.firstName.trim();
     let lastName = this.state.lastName.trim();
-    let occupation = this.state.occupation.trim();
-    let text = this.state.text.trim();
+    let password = this.state.password.trim();
+    let email = this.state.email.trim();
     let date = this.state.date;
     let userID = this.state.userID.trim();
 
 
 
 
-    if (!firstName || !lastName || !occupation || !text || !date || !userID ) {
+    if (!firstName || !lastName || !password || !email || !date || !userID ) {
       return;
     }
     this.props.onModalFormSubmit(
     {	firstName: firstName,
     	lastName: lastName,
-    	occupation: occupation,
-    	text: text,
+    	password: password,
+    	email: email,
       date: Date,
       userID: userID,
     });
     this.setState(
     {	firstName: firstName,
     	lastName: lastName,
-    	occupation: occupation,
-    	text: text,
+    	password: password,
+    	email: email,
       date: Date,
       userID: userID,
     });
@@ -101,26 +101,26 @@ class SignUpForm extends Component {
 	          placeholder='Enter your last name…'
 	          value={ this.state.lastName }
 	          onChange={ this.handleInputChange } />
+          <input
+            type='text'
+            name='email'
+            placeholder='Enter your email…'
+            value={ this.state.email }
+            onChange={ this.handleInputChange } />
 	        <input
-	          type='text'
-	          name='occupation'
-	          placeholder='Choose a occupation…'
-	          value={ this.state.occupation }
-	          onChange={ this.handleInputChange } />
-	        <input
-	          type='text'
-	          name='text'
-	          placeholder='Write your Post.....'
-	          value={ this.state.text }
+	          type='password'
+	          name='password'
+	          placeholder='Choose a password…'
+	          value={ this.state.password }
 	          onChange={ this.handleInputChange } />
           <input
             type='hidden'
             name='date'
             value={Date.now()} />
 	        <input
-	          type='text'
-	          name='userID'
-	          placeholder='firebase userID'
+	          type='password'
+	          name='passwordconfirm'
+	          placeholder='Confirm password…'
 	          value={ this.state.userID}
 	          onChange={ this.handleInputChange } />
           <input

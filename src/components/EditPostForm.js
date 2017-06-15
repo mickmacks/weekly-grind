@@ -54,7 +54,7 @@ class EditPostForm extends Component {
   render() {
     return (
 
-	    <div className="form-container">
+	    <div id="edit-form-container" className="form-container">
   
         <form onSubmit={ this.handleEditPostSubmit }>
 	        <input id="edit-post-value"
@@ -66,7 +66,7 @@ class EditPostForm extends Component {
 	        <input
             className='submit-button'
 	          type='submit'
-	          value='Save Post' />
+	          value='Save Changes' />
 	     </form>
       </div>
     )

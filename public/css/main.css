@@ -8,7 +8,6 @@
   font-family: sans-serif;
 }
 
-
 h1 {
 
   font-family: 'Eczar', sans-serif;
@@ -540,24 +539,48 @@ footer {
   display: flex;
   width: 100%;
   background-color: #0F1B3D;
-  padding: 100px 0px;
   bottom: 0;
   color: white;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
-footer div, li, p {
+#footer-content {
+
+  padding: 0px 10%;
+
+}
+
+#footer-content p {
+
+  width: 100%;
+  display: block;
+
+}
+
+footer ul {
+
+  min-width: 150px;
+  font-family: 'Eczar', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  padding: 80px 40px 0px 40px;
+  margin: 0 auto;
+
+}
+
+footer div, p {
 
   display: flex;
-  grid-template-columns: 1fr 1fr;
-  flex-wrap: wrap;
+  grid-template-columns: 1fr;
   text-decoration: none;
   color: white;
   font-family: 'Eczar', sans-serif;
   font-weight: 400;
   font-size: 1.2rem;
   letter-spacing: 1px;
-  padding: 0px 10px 10px 10px;
+  padding: 40px 40px 0px 40px;
   margin: 0 auto;
 
 }
@@ -582,6 +605,22 @@ footer a {
 }
 
 /*   Modal Container   */
+
+.form-container, {
+
+  display: flex;
+  width: 100%;
+  padding: 100px 0px;
+  background-color: #e6e6cf;
+  margin: 0 0 -10px 0;
+
+}
+
+#edit-form-container {
+
+  background-color: #b7d2cd;
+
+}
 
 .form-container {
 

@@ -13,12 +13,13 @@ class PostsContainer extends Component {
 		super(props);
 		this.state = {
 			posts: [],
-			title: 'Recent Posts'
+			title: 'Recent Posts',
+			editPostId: ''
 		};
 
 		this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
 		this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
-		// this.handlePostSubmit = this.handlePostSubmit.bind(this);
+		this.handlePostEditSubmit = this.handlePostEditSubmit.bind(this);
 		this.handlePostDelete = this.handlePostDelete.bind(this);
 		this.handlePostUpdate = this.handlePostUpdate.bind(this);
 
@@ -94,22 +95,26 @@ class PostsContainer extends Component {
     	console.log("target post id is: ", targetPost.postId)
     	console.log("current value is : ", targetPost.postImage)
 
+    	this.setState({ editPostId: targetPost.postId})
+
     	document.getElementById('new-post-form').style.display = 'none'
     	document.getElementById('edit-post-form').style.display = 'block'
     	// window.scrollTo(1000,document.body.scrollHeight)
     	window.location.href = "#edit-post-form"
     	document.getElementById('edit-post-value').value = targetPost.postImage
 
-
-
 	  //   	const postsRef = fb.child('posts');
 			// postsRef.child(targetPost.postId).set(targetPost)
 
 	}
 
-	handlePostEditSubmit() {
+	handlePostEditSubmit(edittedPost) {
 
+		console.log("edittedPost is: ", edittedPost)
+		console.log("edittedPostId is: ", this.state.editPostId)
 
+		const postsRef = fb.child('posts');
+		postsRef.child(this.state.editPostId).child('image').set(edittedPost.image)
 
 	}
 

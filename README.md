@@ -58,8 +58,10 @@ Message me if you have any questions! Otherwise feel free to build upon the file
 7. Build out homepage with more original onboarding content.
 8. Build in a calendar (perhaps from bootstrap) to schedule group meetings.
 9. Add google maps and pin users locations.
-10. Consider a better way to bring in users posts (from instagram, porting to React Native App)
+10. Consider a better way to bring in users posts (from instagram, porting to React Native App).
 11. Add notifications. Look into more functional global nav.
+12. Reconsider & Research firebase noSQL formatting (specifically keys in data structures).
+13. Implement SASS to organize CSS into component based blocks.
 
 
 ## Authors

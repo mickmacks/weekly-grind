@@ -91,6 +91,7 @@ class Nav extends Component {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
     console.log("signing in")
+
     // tell Firebase auth to log in with a popup and that provider
 
   }
