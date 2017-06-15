@@ -15,7 +15,7 @@ class Footer extends Component {
 						<li>© 2017 Mahmoud Bachir</li>
 					</ul>
 					<div id="footer-blurb">
-						<p>Wayfarer is an a travel review application based in the United States.<br></br> Currently, cities available for review are: San Francisco, Los Angeles, New York. <br></br>For requests to add other cities, please contact us and we will look into it!<br></br>Etc etc etc etc etc blah blah.</p>
+						<p>Welcome to the Weekly Grind! We are a community of thousands, helping eachother to develop and grow in small pockets. Create a private group, or join a public one near you. Learn, develop and share your experiences with your friends and peers — and all for free!</p>
 					</div>
 				</div>
 			</footer>
