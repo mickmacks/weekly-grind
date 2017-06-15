@@ -4,9 +4,24 @@ Weekly Grind is a community for growing creative minds. No rules, no limits. Cre
 
 This full-stack application is a combination of the React library and Firebase database.
 
+## Live Site URL
+
+http://weeklygrind.herokuapp.com
+
 ## Getting Started
 
 Fork and Clone directly from the master branch.
+
+### Tools
+
+```
+    React
+    Firebase
+    Node.js
+    Javascript / jQuery
+    CSS Grids & Flexbox
+
+```
 
 ### Dependencies
 
@@ -20,12 +35,14 @@ Fork and Clone directly from the master branch.
 
 ### Installing
 
-Enter terminal in the root directory/git initialized project folder and run 
+Enter terminal in the root directory/git initialized project folder and run"
 
 ```
 npm install
 
 ```
+
+to install any packages and dependencies required for the app.
 
 ## Built With
 
@@ -79,4 +96,10 @@ This project is licensed under the MIT License.
 
 * Marius Craciunoiu - jQuery Nav Minimizer: https://jsfiddle.net/mariusc23/s6mLJ/31/
 
-* Brianna Veenstra, Cory Fauver, Jean Weatherwax - Instructional and Emotional Support
+* Brianna Veenstra, Cory Fauver, Jean 
+Weatherwax - Instructional and Emotional Support
+
+
+## Notes
+
+For additional information, including user stories, wireframes, project planning and ERD diagrams, please see the "061517-WeeklyGrind.pdf" file within this repo.
