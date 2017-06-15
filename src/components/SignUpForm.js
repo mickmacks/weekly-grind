@@ -16,6 +16,8 @@ class SignUpForm extends Component {
     this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
   }
 
+  //test change
+
   handleInputChange(e) {
 
   	if (e.target.name === 'firstName') {
