@@ -5,8 +5,6 @@ import SignUp from '../views/SignUp'
 import Profile from '../views/Profile'
 import Groups from '../views/Groups'
 import GroupDetail from '../views/GroupDetail'
-import PostDetail from '../views/PostDetail'
-
 
 var ReactRoutes = (
 	<div>

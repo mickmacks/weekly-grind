@@ -29,10 +29,7 @@ class PostsContainer extends Component {
 	loadPostsFromServer(){
 
 	    const postsRef = fb.child('posts');
-	    console.log('posts from postscontainer is:', postsRef)
-	    // 'on' method synchronizes data in real time
-	    // attach it onto a reference that points to a place in the database
-	    // so when the database makes a change, make that update to our react state in real time
+
 	    postsRef.on('value', snap => {
 	        this.setState({
 	          posts: snap.val()
@@ -47,24 +44,23 @@ class PostsContainer extends Component {
 
 		const postsRef = fb.child('posts');
 
-        // postsRef.child("posts").child(username).equalTo(username).once("value", function(snapshot) {
-        // var userData = snapshot.val();
-        //   if (!userData){
-
         var latestPost = postsRef.orderByChild('key').limitToLast(1)
 
 		latestPost.once("value", function(snapshot) {
+
 		  snapshot.forEach(function(child) {
-		    console.log(child.key+": "+child.val());
 
 			currLastIndex = parseInt(child.key, 10) + 1
 
 		  });
+
 		});
 
-		console.log(currLastIndex)
+		// TODO: Pass in user and group props from their components into PostsContainer state
+		// TODO: Change this template post structure to include real User data and group data
 
 		firebase.database().ref('posts/' + currLastIndex).set({
+
 			_id: "" + currLastIndex,
 			user_id: "00000007",
 			group_id: "00010001",
@@ -75,16 +71,12 @@ class PostsContainer extends Component {
 			likedBy: ["00000004"],
 			createdAt: "23rd June 2017, 10:11:15 AM",
 			updatedAt: ""
-		  });
+
+		});
           
 	}
 
 	handlePostDelete(targetPost){
-
-		console.log("this.props is: ", this.props)
-		console.log("targetPost is: ", targetPost)
-
-		console.log("delete button worked!")
 
 		const postsRef = fb.child('posts');
 		postsRef.child(targetPost.postId).remove()
@@ -101,7 +93,6 @@ class PostsContainer extends Component {
     	window.location.href = "#edit-post-form"
     	document.getElementById('edit-post-value').value = targetPost.postImage
 
-    	// TODO: why is the preventing the DOM change above from happening?
     	this.setState({ 
     		editPostId: targetPost.postId,
     		editPostPlaceholder: targetPost.postImage
@@ -111,21 +102,16 @@ class PostsContainer extends Component {
 
 	handlePostEditSubmit(edittedPost) {
 
-		console.log("edittedPost is: ", edittedPost)
-		console.log("edittedPostId is: ", this.state.editPostId)
-
 		const postsRef = fb.child('posts');
 		postsRef.child(this.state.editPostId).child('image').set(edittedPost.image)
 
-		document.getElementById('new-post-form').style.display = 'block'
-    	document.getElementById('edit-post-form').style.display = 'none'
-
 	}
 
-  componentDidMount() {
-    this.loadPostsFromServer();
-    // setInterval(this.loadPostsFromServer, this.props.pollInterval);
-  }
+	componentDidMount() {
+
+		this.loadPostsFromServer();
+
+	}
 
 
 	render() {
@@ -133,22 +119,20 @@ class PostsContainer extends Component {
 		return(
 
 			<div className="posts-container-main">	
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
+
 				<PostsList
 					posts={this.state.posts}
 					title={this.state.title}
 					onPostDelete={this.handlePostDelete}
 					onPostUpdate={this.handlePostUpdate}
 				/>
+
 				<div id="new-post-form">
 					<PostForm 
 					onCreatePostFormSubmit={this.handleNewPostSubmit}					
 					/>
 				</div>
+
 				<div id="edit-post-form">
 					<EditPostForm 
 					targetImageUrl={this.state.editPostPlaceholder}
@@ -162,6 +146,4 @@ class PostsContainer extends Component {
 }
 
 export default PostsContainer;
-
-// <button id="secondary-btn"><a href="/signup">NEW POST</a></button>
 

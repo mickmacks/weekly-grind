@@ -272,6 +272,12 @@ button a:hover, button a:active {
 
 /*   Posts   */
 
+#popular-posts {
+
+  padding-top: 40px;
+
+}
+
 .posts-container-main {
 
   background-color: #F2F2ED;
@@ -281,7 +287,7 @@ button a:hover, button a:active {
 
 .posts-container-main {
 
-  padding: 40px 0px 10px 0px;
+  padding: 130px 0px 10px 0px;
 
 }
 

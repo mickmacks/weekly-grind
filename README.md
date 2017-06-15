@@ -78,3 +78,5 @@ This project is licensed under the MIT License.
 * Samuel Thornton - Material Drop Shadows: https://codepen.io/sdthornton/pen/wBZdXq
 
 * Marius Craciunoiu - jQuery Nav Minimizer: https://jsfiddle.net/mariusc23/s6mLJ/31/
+
+* Brianna Veenstra, Cory Fauver, Jean Weatherwax - Instructional and Emotional Support
