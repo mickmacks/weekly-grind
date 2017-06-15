@@ -24,7 +24,7 @@ class PopularPostsContainer extends Component {
 
 	loadPostsFromServer(){
 
-	    const popPostsRef = fb.child('posts').orderByChild('_id').endAt('00001116');
+	    const popPostsRef = fb.child('posts').limitToFirst(6);
 	    // const limitedPostsRef = popPostsRef.limit(6)
 	    console.log('posts from Popularpostscontainer is:', popPostsRef)
 	    // 'on' method synchronizes data in real time
