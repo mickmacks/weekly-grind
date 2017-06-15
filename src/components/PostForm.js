@@ -15,8 +15,10 @@ class PostForm extends Component {
       likedBy: []
 
     };
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
+  
   }
 
   handleInputChange(e) {
@@ -68,10 +70,9 @@ class PostForm extends Component {
     {	image: image
     });
     this.setState(
-    {	image: image
+    {	image: ""
     });
 
-    console.log('logging this.state: ', this.state);
   }
 
   render() {

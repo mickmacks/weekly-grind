@@ -50,7 +50,11 @@ class Post extends Component {
 
 			<div className="post-card">
 				<div className="post-image">
-					<img src={this.props.post.image}></img>
+					<div className="overlay">
+      					<a className="card-btn" href="#">EDIT</a>
+      					<a className="card-btn" href="#">DELETE</a>
+					</div>
+					<img className="post-image-bkg" src={this.props.post.image}></img>
 				</div>
 				<div className="post-info">
 					<img className="post-info-profile" src={this.state.userImage} alt={this.state.username}/>
@@ -60,6 +64,7 @@ class Post extends Component {
 					</div>
 					<h5 className="post-likes-count"><img src="http://i.imgur.com/tY4OQUk.png" /> {this.props.post.likesCount}</h5>
 				</div>
+				
 			</div>
 		)
 	}

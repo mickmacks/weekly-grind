@@ -24,12 +24,13 @@ class PopularPostsContainer extends Component {
 
 	loadPostsFromServer(){
 
-	    const postsRef = fb.child('posts');
-	    console.log('posts from Popularpostscontainer is:', postsRef)
+	    const popPostsRef = fb.child('posts').orderByChild('_id').endAt('00001116');
+	    // const limitedPostsRef = popPostsRef.limit(6)
+	    console.log('posts from Popularpostscontainer is:', popPostsRef)
 	    // 'on' method synchronizes data in real time
 	    // attach it onto a reference that points to a place in the database
 	    // so when the database makes a change, make that update to our react state in real time
-	    postsRef.on('value', snap => {
+	    popPostsRef.on('value', snap => {
 	        this.setState({
 	          posts: snap.val()
 	        })

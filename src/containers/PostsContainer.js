@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
-import { fb } from '../index.js'
+import { fb, firebase } from '../index.js'
 import $ from 'jquery-ajax';
 
 import PostsList from './PostsList'
 import Post from '../components/Post'
 import PostForm from '../components/PostForm'
+
+let postCount = 7
 
 class PostsContainer extends Component {
 
@@ -69,11 +71,20 @@ class PostsContainer extends Component {
         // var userData = snapshot.val();
         //   if (!userData){
 
-            postsRef.child(post).set({
-                  
-                    image: post.image
+		firebase.database().ref('posts/' + postCount).set({
+			_id: "00" + postCount,
+			user_id: "00000007",
+			group_id: "00010001",
+			title: "Taco Time",
+			body: "Let's get some god damn tacos",
+			image: post.image,
+			likesCount: 1,
+			likedBy: ["00000004"],
+			createdAt: "23rd June 2017, 10:11:15 AM",
+			updatedAt: "23rd June 2017, 10:12:14 AM"
+		  });
 
-            })
+		postCount++
           
 	}
 
