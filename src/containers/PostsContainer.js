@@ -42,7 +42,7 @@ class PostsContainer extends Component {
 
 	handleNewPostSubmit(post){
 
-		let postCount = 0
+		let currLastIndex;
 
 		const postsRef = fb.child('posts');
 
@@ -56,24 +56,24 @@ class PostsContainer extends Component {
 		  snapshot.forEach(function(child) {
 		    console.log(child.key+": "+child.val());
 
-			postCount = parseInt(child.key, 10) + 1
+			currLastIndex = parseInt(child.key, 10) + 1
 
 		  });
 		});
 
-		console.log(postCount)
+		console.log(currLastIndex)
 
-		firebase.database().ref('posts/' + postCount).set({
-			_id: "" + postCount,
+		firebase.database().ref('posts/' + currLastIndex).set({
+			_id: "" + currLastIndex,
 			user_id: "00000007",
 			group_id: "00010001",
-			title: "Taco Time",
-			body: "Let's get some god damn tacos",
+			title: "",
+			body: "",
 			image: post.image,
 			likesCount: 1,
 			likedBy: ["00000004"],
 			createdAt: "23rd June 2017, 10:11:15 AM",
-			updatedAt: "23rd June 2017, 10:12:14 AM"
+			updatedAt: ""
 		  });
           
 	}
@@ -95,16 +95,13 @@ class PostsContainer extends Component {
     	console.log("target post id is: ", targetPost.postId)
     	console.log("current value is : ", targetPost.postImage)
 
-    	this.setState({ editPostId: targetPost.postId})
-
     	document.getElementById('new-post-form').style.display = 'none'
     	document.getElementById('edit-post-form').style.display = 'block'
-    	// window.scrollTo(1000,document.body.scrollHeight)
     	window.location.href = "#edit-post-form"
     	document.getElementById('edit-post-value').value = targetPost.postImage
 
-	  //   	const postsRef = fb.child('posts');
-			// postsRef.child(targetPost.postId).set(targetPost)
+    	// TODO: why is the preventing the DOM change above from happening?
+    	this.setState({ editPostId: targetPost.postId})
 
 	}
 
@@ -115,6 +112,9 @@ class PostsContainer extends Component {
 
 		const postsRef = fb.child('posts');
 		postsRef.child(this.state.editPostId).child('image').set(edittedPost.image)
+
+		document.getElementById('new-post-form').style.display = 'block'
+    	document.getElementById('edit-post-form').style.display = 'none'
 
 	}
 

@@ -52,6 +52,7 @@ class EditPostForm extends Component {
   }
 
   render() {
+
     return (
 
 	    <div id="edit-form-container" className="form-container">

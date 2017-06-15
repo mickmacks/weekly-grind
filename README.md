@@ -46,6 +46,7 @@ Message me if you have any questions! Otherwise feel free to build upon the file
 5. Edit/Delete buttons visibility aren't authenticated.
 6. Group cards break when hitting vertical tablet and below breakpoints.
 7. Navbar not animating properly except for on homepage.
+8. Clean up all the browser console warnings.
 
 ## Future Goals
 
