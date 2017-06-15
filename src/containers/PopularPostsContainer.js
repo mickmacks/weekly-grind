@@ -1,25 +1,22 @@
 import React, {Component} from 'react'
-import { fb, firebase } from '../index.js'
+import { fb } from '../index.js'
 import $ from 'jquery-ajax';
 
 import PostsList from './PostsList'
 import Post from '../components/Post'
-import PostForm from '../components/PostForm'
 
-let postCount = 7
-
-class PostsContainer extends Component {
+class PopularPostsContainer extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			posts: [],
-			title: 'Recent Posts'
+			title: 'Popular Posts'
 		};
 
 		this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
-		this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
-		// this.handlePostSubmit = this.handlePostSubmit.bind(this);
+	// 	this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
+	// 	//this.handlePostSubmit = this.handlePostSubmit.bind(this);
 	// 	// this.handlePostDelete = this.handlePosttDelete.bind(this);
 	// 	// this.handlePostUpdate = this.handlePostUpdate.bind(this);
 
@@ -27,12 +24,13 @@ class PostsContainer extends Component {
 
 	loadPostsFromServer(){
 
-	    const postsRef = fb.child('posts');
-	    console.log('posts from postscontainer is:', postsRef)
+	    const popPostsRef = fb.child('posts').orderByChild('_id').endAt('00001116');
+	    // const limitedPostsRef = popPostsRef.limit(6)
+	    console.log('posts from Popularpostscontainer is:', popPostsRef)
 	    // 'on' method synchronizes data in real time
 	    // attach it onto a reference that points to a place in the database
 	    // so when the database makes a change, make that update to our react state in real time
-	    postsRef.on('value', snap => {
+	    popPostsRef.on('value', snap => {
 	        this.setState({
 	          posts: snap.val()
 	        })
@@ -64,28 +62,6 @@ class PostsContainer extends Component {
 		// 	console.error(err);
 		// 	this.setState({posts: posts});
 		// });
-
-		const postsRef = fb.child('posts');
-
-        // postsRef.child("posts").child(username).equalTo(username).once("value", function(snapshot) {
-        // var userData = snapshot.val();
-        //   if (!userData){
-
-		firebase.database().ref('posts/' + postCount).set({
-			_id: "00" + postCount,
-			user_id: "00000007",
-			group_id: "00010001",
-			title: "Taco Time",
-			body: "Let's get some god damn tacos",
-			image: post.image,
-			likesCount: 1,
-			likedBy: ["00000004"],
-			createdAt: "23rd June 2017, 10:11:15 AM",
-			updatedAt: "23rd June 2017, 10:12:14 AM"
-		  });
-
-		postCount++
-          
 	}
 
 	handlePostDelete(id){
@@ -130,29 +106,14 @@ class PostsContainer extends Component {
 		return(
 
 			<div className="posts-container-main">	
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
 				<PostsList
 					posts={this.state.posts}
 					title={this.state.title}
 					onPostDelete={this.handlePostDelete}
-					onPostUpdate={this.handlePostUpdate}
-				/>
-				<div className="posts-form-container">
-					<PostForm 
-					onCreatePostFormSubmit={this.handleNewPostSubmit}					
-					/>
-				</div>
-
+					onPostUpdate={this.handlePostUpdate}/>
        		</div>
 		)
 	}
 }
 
-export default PostsContainer;
-
-// <button id="secondary-btn"><a href="/signup">NEW POST</a></button>
-
+export default PopularPostsContainer;

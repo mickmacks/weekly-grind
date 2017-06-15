@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import Nav from '../components/Nav'
 import Hero from '../components/Hero'
+import PopularPostsContainer from '../containers/PopularPostsContainer'
 import Footer from '../components/Footer'
-import { auth, firebase } from '../index.js'
-
 
 class Home extends Component {
+
   render() {
     return (
     <div>
     	<Nav />
     	<Hero />
-		<Footer />
-	</div>
+    	<PopularPostsContainer />
+		  <Footer />
+	   </div>
     )
   }
 }

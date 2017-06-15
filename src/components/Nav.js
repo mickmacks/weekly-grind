@@ -1,60 +1,97 @@
 import React, {Component} from 'react'
-import { auth, firebase, blah } from '../index.js'
+import { auth, firebase, fb } from '../index.js'
 
-// import { Link } from 'react-router-dom'
+let userCount = 10;
+
 class Nav extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      pageName: 'Home',
-      currentUser: null,
-      loggedIn: false
+      currUser: null,
+      currUserName: '',
+      currUserImage: '',
+      loggedIn: true
     }
-    this.handleGetUserData = this.handleGetUserData.bind(this)
     this.loginButtonClicked = this.loginButtonClicked.bind(this)
     this.logoutButtonClicked = this.logoutButtonClicked.bind(this)
 
   }
   
   componentWillMount() {
-    // auth.onAuthStateChanged(currentUser => {
-    //   if (currentUser) {
-    //     console.log('Logged in:', currentUser);
-    //     // set currentUser in App component state
-    //     this.setState({ currentUser });
-    //     // currentUserData=currentUser;
-    //     // console.log(currentUserData);
-    //     console.log(this.state, "logging");
-    //   } else {
-    //     this.setState({ currentUser: null });
-    //   }
-    // })
+    auth.onAuthStateChanged(currUser => {
+      if (currUser) {
+
+        this.setState({ 
+          currUser: currUser,
+          currUserName: currUser.displayName,
+          currUserImage: currUser.photoURL,
+          loggedIn: true
+         });
+
+        document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
+        document.getElementById('primary-btn').style.display = 'none';
+
+        // var newPassword = getASecureRandomPassword()
+
+        const usersRef = fb.child('users');
+        let username = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
+        
+        let nameArray = this.state.currUserName.split(" ")
+        let firstName = nameArray[0]
+        let lastName = nameArray[1]
+
+        usersRef.child("users").child(username).equalTo(username).once("value", function(snapshot) {
+        var userData = snapshot.val();
+          if (!userData){
+
+            usersRef.child(userCount).set({
+                  
+                    uid: currUser.uid,
+                    email: currUser.email,
+                    name: currUser.displayName,
+                    firstName: firstName,
+                    lastName: lastName,
+                    location: 'San Francisco, CA',
+                    password: 'password',
+                    userImage: currUser.photoURL,
+                    _id: "userCount"
+
+            })
+
+            userCount++
+          }
+        });
+
+        document.getElementById('userImage').style.display = 'inline-block';
+        document.getElementById('logout').style.display = 'inline-block';
+        document.getElementById('login').style.display = 'none';
+
+      } else {
+
+        this.setState({ 
+          currUser: null,
+          currUserName: '',
+          currUserImage: '',
+          loggedIn: false
+        });
+
+        document.getElementById('userImage').style.display = 'none';
+        document.getElementById('login').style.display = 'inline-block';
+        document.getElementById('logout').style.display = 'none';
+        
+      }
+
+    })
   }
 
   loginButtonClicked(e) {
     e.preventDefault();
     // set up provider
     const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
     console.log("signing in")
     // tell Firebase auth to log in with a popup and that provider
-    auth.signInWithPopup(provider);
-  }
-
-  componentDidMount() {
-
-    setInterval(this.handleGetUserData, 3000);
-
-  }
-
-  handleGetUserData() {
-
-    var uData = this.state.currentUser;
-    
-    () => {
-      console.log('clicked test button');
-      this.props.onGetUserData(uData)
-    }
 
   }
 
@@ -63,43 +100,56 @@ class Nav extends Component {
     // tell Firebase auth to log out
     console.log("signing out");
     auth.signOut();
+
+    this.setState({
+      loggedIn: false
+    })
+
+    let welcomeMessage = "Weekly Grind is a community for growing creative minds. No rules, no limits."
+
+    document.getElementById('intro').innerHTML = welcomeMessage;
+    document.getElementById('primary-btn').style.display = 'block';
+    document.getElementById('primary-btn').innerHTML = 'Sign Up';
   }
-   
-
-
 
   render() {
-    return(
 
-      <nav>
-        <div className="container-fluid">
+      if (this.state.loggedIn === false) {
 
-        <a href="http://localhost:3001" className="navbar-brand"><h4>WeeklyGrind</h4></a>
+        return(
 
-        <ul className="nav navbar-nav navbar-right">
+          <nav className="nav-down">
+            <a href="/"><h4>WeeklyGrind</h4></a>
+           
+            <div id="authentication">   
+             <button id="login" onClick={this.loginButtonClicked}>Join / Login</button>
+            </div> 
+          </nav>
 
-          <li id="userName">{this.state.currentUser && this.state.currentUser.displayName}</li>
+        )
 
-          <li>
-            <a onClick={this.loginButtonClicked}>
-              <span className="glyphicon glyphicon-log-in"></span> 
-              Login
-            </a>
-          </li>
+      }
 
-          <li>
-            <a onClick={this.logoutButtonClicked}>
-              <span className="glyphicon glyphicon-log-out" ></span> 
-              Logout
-            </a>
-          </li>
+      else {
 
-        </ul>
+      let formattedName = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
+      let groupsURL = '/user/' + formattedName + '/groups'
 
-        </div>
-      </nav>
+      return(
 
-    )
+        <nav className="nav-down">
+            <a href="/"><h4>WeeklyGrind</h4></a>
+         
+          <div id="authentication">
+           <button><a href={groupsURL}>Groups</a></button>
+           <button id="logout" onClick={this.logoutButtonClicked}><a href="/">Logout</a></button>
+           <img id="userImage" src={this.state.currUserImage} />
+          </div> 
+        </nav>
+
+      )
+
+    }
   }
 }
 

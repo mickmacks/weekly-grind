@@ -1,0 +1,214 @@
+{
+
+	"users": {
+
+		"00000001":{
+			"_id": "00000001",
+			"firstName": "Iris",
+			"lastName": "Silva",
+			"username": "irissilva",
+			"userImage": "./images/irissilva.png",
+			"email": "is@gmail.com",
+			"password": "password",
+			"occupation": "Illustrator",
+			"location": "San Francisco",
+			"groups": ["00010001", "00010002"],
+			"posts": ["00001111"]
+		},
+		"00000002":{
+			"_id": "00000002",
+			"firstName": "Henry",
+			"lastName": "Smith",
+			"username": "henrysmith",
+			"userImage": "./images/henrysmith.png",
+			"email": "hs@gmail.com",
+			"password": "password",
+			"occupation": "Designer",
+			"location": "Oakland",
+			"groups": ["00010001", "00010002"],
+			"posts": ["00001112"]
+		},
+		"00000003":{
+			"_id": "00000003",
+			"firstName": "Haruki",
+			"lastName": "Sou",
+			"username": "harukisou",
+			"userImage": "./images/harukisou.png",
+			"email": "hs@gmail.com",
+			"password": "password",
+			"occupation": "Developer",
+			"location": "San Jose",
+			"groups": ["00010001", "00010002"],
+			"posts": []
+		},
+		"00000004":{
+			"_id": "00000004",
+			"firstName": "Jez",
+			"lastName": "Howard",
+			"username": "jezhoward",
+			"userImage": "./images/jezhoward.png",
+			"email": "jh@gmail.com",
+			"password": "password",
+			"occupation": "UX Designer",
+			"location": "San Francisco",
+			"groups": ["00010001"],
+			"posts": []
+		},
+		"00000005":{
+			"_id": "00000005",
+			"firstName": "Raj",
+			"lastName": "Khan",
+			"username": "rajkhan",
+			"userImage": "./images/rajkhan.png",
+			"email": "rk@gmail.com",
+			"password": "password",
+			"occupation": "Photographer",
+			"location": "Los Angeles",
+			"groups": ["00010001"],
+			"posts": []
+		},
+		"00000006":{
+			"_id": "00000006",
+			"firstName": "Erik",
+			"lastName": "Johnson",
+			"username": "erikjohnson",
+			"userImage": "./images/erikjohnson.png",
+			"email": "ej@gmail.com",
+			"password": "password",
+			"occupation": "Illustrator",
+			"location": "San Francisco",
+			"groups": ["00010001"],
+			"posts": []
+		}
+
+	},
+
+	"groups": {
+
+		"0":{
+			"_id": "00010001",
+			"name": "Sketch Club",
+			"heroImage": "http://www.unsplash.it/1500",
+			"logo": "http://www.unsplash.it/1500",
+			"nextMeet": "23rd June 2017, 10:12:14 AM",
+			"location": "San Francisco, CA",
+			"password": "password",
+
+			"admins": [
+				"00000001"
+			],
+			"users": [ 
+				"00000001",
+				"00000002",
+				"00000003",
+				"00000004",
+				"00000005",
+				"00000006"
+			],
+			"posts": [
+				"00001111",
+				"00001112",
+				"00001113"
+			]			
+		},
+		"1":{
+			"_id": "00010002",
+			"name": "Portrait Artists",
+			"heroImage": "http://www.unsplash.it/1512",
+			"logo": "http://www.unsplash.it/1515",
+			"nextMeet": "23rd June 2017, 10:12:14 AM",
+			"location": "Oakland, CA",
+			"password": "password",
+
+			"admins": [
+				"00000002"
+			],
+			"users": [ 
+				"00000001",
+				"00000002",
+				"00000003"
+			],
+			"posts": [
+				"00001114",
+				"00001115",
+				"00001116"
+			]			
+		}
+
+	},
+
+	"posts": [
+
+		{	
+			"_id": "00001111",
+			"user_id": "00000001",
+			"group_id": "00010001",
+			"title": "Taco Time",
+			"body": "Let's get some god damn tacos",
+			"image": "http://www.unsplash.it/1501",
+			"likesCount": 414,
+			"likedBy": ["00000004"],
+			"createdAt": "23rd June 2017, 10:11:15 AM",
+			"updatedAt": "23rd June 2017, 10:12:14 AM"
+		},
+		{	
+			"_id": "00001112",
+			"user_id": "00000002",
+			"group_id": "00010001",
+			"title": "Taco Taco Burrito",
+			"body": "Yes Tacos",
+			"image": "http://www.unsplash.it/1502",
+			"likesCount": 311,
+			"likedBy": ["00000003"],
+			"createdAt": "23rd June 2017, 10:51:15 AM"
+		},
+		{	
+			"_id": "00001113",
+			"user_id": "00000003",
+			"group_id": "00010001",
+			"title": "Taco Time",
+			"body": "Let's get some god damn tacos",
+			"image": "http://www.unsplash.it/1503",
+			"likesCount": 282,
+			"likedBy": ["00000004"],
+			"createdAt": "23rd June 2017, 10:11:15 AM",
+			"updatedAt": "23rd June 2017, 10:12:14 AM"
+		},
+		{	
+			"_id": "00001114",
+			"user_id": "00000004",
+			"group_id": "00010001",
+			"title": "Taco Taco Burrito",
+			"body": "Yes Tacos",
+			"image": "http://www.unsplash.it/1504",
+			"likesCount": 256,
+			"likedBy": ["00000003"],
+			"createdAt": "23rd June 2017, 10:51:15 AM"
+		},
+		{	
+			"_id": "00001115",
+			"user_id": "00000005",
+			"group_id": "00010001",
+			"title": "Taco Time",
+			"body": "Let's get some god damn tacos",
+			"image": "http://www.unsplash.it/1505",
+			"likesCount": 212,
+			"likedBy": ["00000004"],
+			"createdAt": "23rd June 2017, 10:11:15 AM",
+			"updatedAt": "23rd June 2017, 10:12:14 AM"
+		},
+		{	
+			"_id": "00001116",
+			"user_id": "00000006",
+			"group_id": "00010001",
+			"title": "Taco Taco Burrito",
+			"body": "Yes Tacos",
+			"image": "http://www.unsplash.it/1506",
+			"likesCount": 199,
+			"likedBy": ["00000003"],
+			"createdAt": "23rd June 2017, 10:51:15 AM"
+		}
+
+	]
+
+}

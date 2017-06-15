@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
+import { firebase } from '../index.js'
 
 class Hero extends Component {
-	constructor() {
-		super();
-		this.state = {
-			backgroundURL: ''
-		}
-	}
+
+	constructor(props) {
+    	super(props);
+    	this.state = {
+			link: "/signup"
+    	}
+    }
 
 	render() {
 
@@ -14,11 +16,10 @@ class Hero extends Component {
 
 			<div id="hero-signup">
 
-	            	<h1>Weekly Grind is a community of  growing creative minds. No rules,  no limitations.</h1>
-					
-					<section id="hero-scroll" className="scroll">
-	            		<a href="#"><span></span><h5>Scroll</h5></a>
-	            	</section>
+	            	<div id="hero-signup-copy">
+	            		<h1 id="intro">Weekly Grind is a community of  growing creative minds. No rules. No limits.</h1>
+						<button id="primary-btn"><a href="/signup">SIGN UP</a></button>
+					</div>
 
 			</div>
 

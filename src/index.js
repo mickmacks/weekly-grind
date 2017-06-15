@@ -19,12 +19,32 @@ firebase.initializeApp(config);
 
 const auth = firebase.auth();
 
+const fb = firebase.database().ref();
+
+const fbArray = (firebaseObjectList) => {
+  if (!firebaseObjectList) return [];
+
+  return Object.keys(firebaseObjectList)
+    .map(k => {
+      const obj = {
+        id: k
+      };
+      for (let key in firebaseObjectList[k]) {
+        if (firebaseObjectList[k].hasOwnProperty(key)) {
+          obj[key] = firebaseObjectList[k][key];
+        }
+      }
+      return obj;
+    });
+}
+
+
 ReactDOM.render(
 		<Router routes={routes} history={browserHistory} />, 
 		document.getElementById('root')
 	);
 
-export { auth, firebase } 
+export { auth, firebase, fb, fbArray } 
 
 
 
