@@ -91,17 +91,19 @@ class Nav extends Component {
 
   }
 
-  componentDidUpdate(){
+  // TODO: Fix this so it doesn't break on other pages - move it outside of NAV
 
-    // TODO: Find a better way to track conditional that still works.
-    if (document.getElementById('userImage')){
+  // componentDidUpdate(){
 
-      document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
-      document.getElementById('primary-btn').style.display = 'none';
+  //   // TODO: Find a better way to track conditional that still works.
+  //   if (document.getElementById('userImage')){
 
-    }
+  //     document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
+  //     document.getElementById('primary-btn').style.display = 'none';
 
-  }
+  //   }
+
+  // }
 
   loginButtonClicked(e) {
 
