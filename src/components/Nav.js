@@ -19,7 +19,9 @@ class Nav extends Component {
   }
   
   componentWillMount() {
+
     auth.onAuthStateChanged(currUser => {
+      
       if (currUser) {
 
         this.setState({ 
@@ -29,11 +31,6 @@ class Nav extends Component {
           loggedIn: true
          });
 
-        document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
-        document.getElementById('primary-btn').style.display = 'none';
-
-        // var newPassword = getASecureRandomPassword()
-
         const usersRef = fb.child('users');
         let username = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
         
@@ -42,38 +39,46 @@ class Nav extends Component {
         let lastName = nameArray[1]
 
         usersRef.child("users").child(username).equalTo(username).once("value", function(snapshot) {
-        var userData = snapshot.val();
+          
+          var userData = snapshot.val();
+          
           if (!userData){
 
             usersRef.child(userCount).set({
-                  
-                    uid: currUser.uid,
-                    email: currUser.email,
-                    name: currUser.displayName,
-                    firstName: firstName,
-                    lastName: lastName,
-                    location: 'San Francisco, CA',
-                    password: 'password',
-                    userImage: currUser.photoURL,
-                    _id: "userCount"
+                    
+                      uid: currUser.uid,
+                      email: currUser.email,
+                      name: currUser.displayName,
+                      firstName: firstName,
+                      lastName: lastName,
+                      location: 'San Francisco, CA',
+                      password: 'password',
+                      userImage: currUser.photoURL,
+                      _id: "userCount"
 
-            })
+              })
 
             userCount++
+
           }
+
         });
 
         document.getElementById('userImage').style.display = 'inline-block';
         document.getElementById('logout').style.display = 'inline-block';
         document.getElementById('login').style.display = 'none';
+        document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
+        document.getElementById('primary-btn').style.display = 'none';
 
       } else {
 
         this.setState({ 
+
           currUser: null,
           currUserName: '',
           currUserImage: '',
           loggedIn: false
+
         });
 
         document.getElementById('userImage').style.display = 'none';
@@ -83,27 +88,26 @@ class Nav extends Component {
       }
 
     })
+
   }
 
   loginButtonClicked(e) {
-    e.preventDefault();
-    // set up provider
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-    console.log("signing in")
 
-    // tell Firebase auth to log in with a popup and that provider
+    e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithRedirect(provider);
 
   }
 
   logoutButtonClicked(e) {
+
     e.preventDefault();
-    // tell Firebase auth to log out
-    console.log("signing out");
     auth.signOut();
 
     this.setState({
+
       loggedIn: false
+
     })
 
     let welcomeMessage = "Weekly Grind is a community for growing creative minds. No rules, no limits."
@@ -111,6 +115,7 @@ class Nav extends Component {
     document.getElementById('intro').innerHTML = welcomeMessage;
     document.getElementById('primary-btn').style.display = 'block';
     document.getElementById('primary-btn').innerHTML = 'Sign Up';
+
   }
 
   render() {
@@ -120,11 +125,12 @@ class Nav extends Component {
         return(
 
           <nav className="nav-down">
+
             <a href="/"><h4>WeeklyGrind</h4></a>
-           
             <div id="authentication">   
-             <button id="login" onClick={this.loginButtonClicked}>Join / Login</button>
+              <button id="login" onClick={this.loginButtonClicked}>Join / Login</button>
             </div> 
+
           </nav>
 
         )
@@ -133,24 +139,24 @@ class Nav extends Component {
 
       else {
 
-      let formattedName = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
-      let groupsURL = '/user/' + formattedName + '/groups'
+        let formattedName = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
+        let groupsURL = '/user/' + formattedName + '/groups'
 
-      return(
+        return(
 
-        <nav className="nav-down">
+          <nav className="nav-down">
+
             <a href="/"><h4>WeeklyGrind</h4></a>
-         
-          <div id="authentication">
-           <button><a href={groupsURL}>Groups</a></button>
-           <button id="logout" onClick={this.logoutButtonClicked}><a href="/">Logout</a></button>
-           <img id="userImage" src={this.state.currUserImage} />
-          </div> 
-        </nav>
+            <div id="authentication">
+              <button><a href={groupsURL}>Groups</a></button>
+              <button id="logout" onClick={this.logoutButtonClicked}><a href="/">Logout</a></button>
+              <img id="userImage" src={this.state.currUserImage} />
+            </div> 
 
-      )
+          </nav>
 
-    }
+        )
+      }
   }
 }
 
