@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class PostForm extends Component {
+class EditPostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ class PostForm extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
+    this.handleEditPostSubmit = this.handleEditPostSubmit.bind(this);
   
   }
 
@@ -30,7 +30,7 @@ class PostForm extends Component {
   }
 
 
-  handleNewPostSubmit(e) {
+  handleEditPostSubmit(e) {
 
     e.preventDefault();
     //we will be tying this into the POST method in a bit
@@ -42,7 +42,7 @@ class PostForm extends Component {
     if (!image) {
       return;
     }
-    this.props.onCreatePostFormSubmit(
+    this.props.onEditPostFormSubmit(
     {	image: image
     });
     this.setState(
@@ -56,8 +56,8 @@ class PostForm extends Component {
 
 	    <div className="form-container">
   
-        <form onSubmit={ this.handleNewPostSubmit }>
-	        <input
+        <form onSubmit={ this.handleEditPostSubmit }>
+	        <input id="edit-post-value"
 	          type='text'
 	          name='image'
 	          placeholder='Enter Image Link…'
@@ -66,11 +66,11 @@ class PostForm extends Component {
 	        <input
             className='submit-button'
 	          type='submit'
-	          value='Create Post' />
+	          value='Save Post' />
 	     </form>
       </div>
     )
   }
 }
 
-export default PostForm;
+export default EditPostForm;

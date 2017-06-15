@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
-import { fb, firebase } from '../index.js'
+import { fb, firebase, fbArray } from '../index.js'
 import $ from 'jquery-ajax';
 
 import PostsList from './PostsList'
 import Post from '../components/Post'
 import PostForm from '../components/PostForm'
-
-let postCount = 7
+import EditPostForm from '../components/EditPostForm'
 
 class PostsContainer extends Component {
 
@@ -21,7 +20,7 @@ class PostsContainer extends Component {
 		this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
 		// this.handlePostSubmit = this.handlePostSubmit.bind(this);
 		this.handlePostDelete = this.handlePostDelete.bind(this);
-	// 	// this.handlePostUpdate = this.handlePostUpdate.bind(this);
+		this.handlePostUpdate = this.handlePostUpdate.bind(this);
 
 	}
 
@@ -42,12 +41,26 @@ class PostsContainer extends Component {
 
 	handleNewPostSubmit(post){
 
+		let postCount = 0
 
 		const postsRef = fb.child('posts');
 
         // postsRef.child("posts").child(username).equalTo(username).once("value", function(snapshot) {
         // var userData = snapshot.val();
         //   if (!userData){
+
+        var latestPost = postsRef.orderByChild('key').limitToLast(1)
+
+		latestPost.once("value", function(snapshot) {
+		  snapshot.forEach(function(child) {
+		    console.log(child.key+": "+child.val());
+
+			postCount = parseInt(child.key, 10) + 1
+
+		  });
+		});
+
+		console.log(postCount)
 
 		firebase.database().ref('posts/' + postCount).set({
 			_id: "" + postCount,
@@ -61,8 +74,6 @@ class PostsContainer extends Component {
 			createdAt: "23rd June 2017, 10:11:15 AM",
 			updatedAt: "23rd June 2017, 10:12:14 AM"
 		  });
-
-		postCount++
           
 	}
 
@@ -75,34 +86,32 @@ class PostsContainer extends Component {
 
 		const postsRef = fb.child('posts');
 		postsRef.child(targetPost.postId).remove()
-		// couldn't move this to global variable
 
-
-	 //    $.ajax({
-	 //      method: 'DELETE',
-	 //      url: 'http://localhost:3000/api/cities/:cityId/posts/:postId'
-
-	//     })
-	//     .then((res) => {
-	//       console.log('Post deleted');
-	//     }, (err) => {
-	//       console.error(err);
-	//     });
 	}
 
-    handlePostUpdate(id, post) {
-    //sends the posts id and new text to our api
-    // $.ajax({
-    //   method: 'PUT',
-    //   url:'http://localhost:3000/api/cities/:cityId/posts/:postId' ,
-    //   data: post
-    // })
-    // .then(res => {
-    //   console.log(res);
-    // }, err => {
-    //   console.log(err);
-    // })
-  }
+    handlePostUpdate(targetPost) {
+
+    	console.log("target post id is: ", targetPost.postId)
+    	console.log("current value is : ", targetPost.postImage)
+
+    	document.getElementById('new-post-form').style.display = 'none'
+    	document.getElementById('edit-post-form').style.display = 'block'
+    	// window.scrollTo(1000,document.body.scrollHeight)
+    	window.location.href = "#edit-post-form"
+    	document.getElementById('edit-post-value').value = targetPost.postImage
+
+
+
+	  //   	const postsRef = fb.child('posts');
+			// postsRef.child(targetPost.postId).set(targetPost)
+
+	}
+
+	handlePostEditSubmit() {
+
+
+
+	}
 
   componentDidMount() {
     this.loadPostsFromServer();
@@ -126,9 +135,14 @@ class PostsContainer extends Component {
 					onPostDelete={this.handlePostDelete}
 					onPostUpdate={this.handlePostUpdate}
 				/>
-				<div className="posts-form-container">
+				<div id="new-post-form">
 					<PostForm 
 					onCreatePostFormSubmit={this.handleNewPostSubmit}					
+					/>
+				</div>
+				<div id="edit-post-form">
+					<EditPostForm 
+					onEditPostFormSubmit={this.handlePostEditSubmit}					
 					/>
 				</div>
 

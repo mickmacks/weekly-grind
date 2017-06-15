@@ -9,11 +9,13 @@ class Post extends Component {
 			username: '',
 			userImage: '',
 			location: '',
-			postId: ''
+			postId: '',
+			postImage: ''
 		};
 
 		this.getUser = this.getUser.bind(this);
 		this.deletePost = this.deletePost.bind(this);
+		this.updatePost = this.updatePost.bind(this);
 	}
 
 	// this.props.uniqueId to send post id back to container crud function
@@ -22,7 +24,7 @@ class Post extends Component {
 
 		let usersRef = fb.child('users');
 		let userId = this.props.post.user_id
-		console.log("this.props.uniqueId is: ", this.props.uniqueId)
+		// console.log("this.props.uniqueId is: ", this.props.uniqueId)
 
 		usersRef.orderByChild('_id').equalTo(userId).on("value", snap => {
 			
@@ -37,7 +39,9 @@ class Post extends Component {
 				username: currFullName,
 				location: currUserLocation, 
 				userImage: currUserImage,
-				postId: this.props.uniqueId
+				postId: this.props.uniqueId,
+				postImage: this.props.post.image
+
 			});
 
 		});
@@ -56,6 +60,14 @@ class Post extends Component {
 
 	}
 
+	updatePost(e) {
+
+		e.preventDefault();
+		let targetPost = this.state;
+		this.props.onPostUpdate(targetPost)
+
+	}
+
 	render() {
 
 		return(
@@ -63,7 +75,7 @@ class Post extends Component {
 			<div className="post-card"> 
 				<div className="post-image">
 					<div className="overlay">
-      					<button className="card-btn">EDIT</button>
+      					<button className="card-btn" onClick={this.updatePost}>EDIT</button>
       					<button className="card-btn" onClick={this.deletePost}>DELETE</button>
 					</div>
 					<img className="post-image-bkg" src={this.props.post.image}></img>

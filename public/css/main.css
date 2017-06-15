@@ -389,6 +389,12 @@ button a:hover, button a:active {
 
 }
 
+#edit-post-form {
+
+  display: none;
+
+}
+
 /*   Groups   */
 
 .groups-container-main {
@@ -582,8 +588,8 @@ footer a {
   display: flex;
   width: 100%;
   padding: 100px 0px;
-  background-color: #EFEFDD;
-  margin: 0;
+  background-color: #e6e6cf;
+  margin: 0 0 -10px 0;
 
 }
 
