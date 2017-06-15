@@ -4,8 +4,8 @@ class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userImage: '',
-      user: '',
+      firstName: '',
+      lastName: '',
       occupation: '',
       text: '',
       date: Date,
@@ -18,12 +18,12 @@ class SignUpForm extends Component {
 
   handleInputChange(e) {
 
-  	if (e.target.name === 'userImage') {
-  		this.setState({ userImage: e.target.value });
+  	if (e.target.name === 'firstName') {
+  		this.setState({ firstName: e.target.value });
   	}
 
-  	if (e.target.name === 'user') {
-  		this.setState({ user: e.target.value });
+  	if (e.target.name === 'lastName') {
+  		this.setState({ lastName: e.target.value });
   	}
 
   	if (e.target.name === 'occupation') {
@@ -48,8 +48,8 @@ class SignUpForm extends Component {
 
     e.preventDefault();
     //we will be tying this into the POST method in a bit
-    let userImage = this.state.userImage.trim();
-    let user = this.state.user.trim();
+    let firstName = this.state.firstName.trim();
+    let lastName = this.state.lastName.trim();
     let occupation = this.state.occupation.trim();
     let text = this.state.text.trim();
     let date = this.state.date;
@@ -58,20 +58,20 @@ class SignUpForm extends Component {
 
 
 
-    if (!userImage || !user || !occupation || !text || !date || !userID ) {
+    if (!firstName || !lastName || !occupation || !text || !date || !userID ) {
       return;
     }
     this.props.onModalFormSubmit(
-    {	userImage: userImage,
-    	user: user,
+    {	firstName: firstName,
+    	lastName: lastName,
     	occupation: occupation,
     	text: text,
       date: Date,
       userID: userID,
     });
     this.setState(
-    {	userImage: userImage,
-    	user: user,
+    {	firstName: firstName,
+    	lastName: lastName,
     	occupation: occupation,
     	text: text,
       date: Date,
@@ -91,13 +91,13 @@ class SignUpForm extends Component {
 	          type='text'
 	          name='firstName'
 	          placeholder='Enter your first name…'
-	          value={ this.state.userImage }
+	          value={ this.state.firstName }
 	          onChange={ this.handleInputChange } />
 	        <input
 	          type='text'
 	          name='lastName'
 	          placeholder='Enter your last name…'
-	          value={ this.state.user }
+	          value={ this.state.lastName }
 	          onChange={ this.handleInputChange } />
 	        <input
 	          type='text'
