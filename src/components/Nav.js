@@ -25,11 +25,13 @@ class Nav extends Component {
       if (currUser) {
 
         this.setState({ 
+
           currUser: currUser,
           currUserName: currUser.displayName,
           currUserImage: currUser.photoURL,
           loggedIn: true
-         });
+
+        });
 
         const usersRef = fb.child('users');
         let username = this.state.currUserName.toLowerCase().replace(/\s+/g, '')
@@ -42,7 +44,7 @@ class Nav extends Component {
           
           var userData = snapshot.val();
           
-          if (!userData){
+          if (!userData) {
 
             usersRef.child(userCount).set({
                     
@@ -66,9 +68,7 @@ class Nav extends Component {
 
         document.getElementById('userImage').style.display = 'inline-block';
         document.getElementById('logout').style.display = 'inline-block';
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
-        document.getElementById('primary-btn').style.display = 'none';
+        document.getElementById('login').style.display = 'none';        
 
       } else {
 
@@ -88,6 +88,18 @@ class Nav extends Component {
       }
 
     })
+
+  }
+
+  componentDidUpdate(){
+
+    // TODO: Find a better way to track conditional that still works.
+    if (document.getElementById('userImage')){
+
+      document.getElementById('intro').innerHTML = 'Welcome back, ' + this.state.currUserName + '!';
+      document.getElementById('primary-btn').style.display = 'none';
+
+    }
 
   }
 
@@ -127,7 +139,7 @@ class Nav extends Component {
           <nav className="nav-down">
 
             <a href="/"><h4>WeeklyGrind</h4></a>
-            <div id="authentication">   
+            <div id="authentication">
               <button id="login" onClick={this.loginButtonClicked}>Join / Login</button>
             </div> 
 
