@@ -14,7 +14,8 @@ class PostsContainer extends Component {
 		this.state = {
 			posts: [],
 			title: 'Recent Posts',
-			editPostId: ''
+			editPostId: '',
+			editPostPlaceholder: ''
 		};
 
 		this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
@@ -101,7 +102,10 @@ class PostsContainer extends Component {
     	document.getElementById('edit-post-value').value = targetPost.postImage
 
     	// TODO: why is the preventing the DOM change above from happening?
-    	this.setState({ editPostId: targetPost.postId})
+    	this.setState({ 
+    		editPostId: targetPost.postId,
+    		editPostPlaceholder: targetPost.postImage
+    	})
 
 	}
 
@@ -147,6 +151,7 @@ class PostsContainer extends Component {
 				</div>
 				<div id="edit-post-form">
 					<EditPostForm 
+					targetImageUrl={this.state.editPostPlaceholder}
 					onEditPostFormSubmit={this.handlePostEditSubmit}					
 					/>
 				</div>

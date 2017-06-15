@@ -33,11 +33,7 @@ class PostForm extends Component {
   handleNewPostSubmit(e) {
 
     e.preventDefault();
-    //we will be tying this into the POST method in a bit
     let image = this.state.image.trim();
-
-
-    // if (!image || !user || !occupation || !text || !date || !userID )
 
     if (!image) {
       return;

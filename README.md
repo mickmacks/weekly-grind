@@ -76,3 +76,5 @@ This project is licensed under the MIT License.
 ## Acknowledgments
 
 * Samuel Thornton - Material Drop Shadows: https://codepen.io/sdthornton/pen/wBZdXq
+
+* Marius Craciunoiu - jQuery Nav Minimizer: https://jsfiddle.net/mariusc23/s6mLJ/31/

@@ -4,6 +4,7 @@ import { firebase, fb } from "../index.js"
 class Group extends Component {
 
 	constructor(props) {
+
 		super(props);
 		this.state = {
 			username: '',
@@ -12,6 +13,7 @@ class Group extends Component {
 		};
 
 		this.getUserGroups = this.getUserGroups.bind(this);
+
 	}
 
 	getUserGroups() {
@@ -19,33 +21,12 @@ class Group extends Component {
 		let usersRef = fb.child('users');
 		let userId = this.props.group.user_id
 
-		// usersRef.orderByChild('_id').equalTo(userId).on("value", snap => {
-			
-		// 	let firstName = snap.val()[userId].firstName
-		// 	let lastName = snap.val()[userId].lastName
-		// 	let currFullName = firstName + " " + lastName
-
-		// 	let currUserLocation = snap.val()[userId].location
-		// 	let currUserImage = snap.val()[userId].userImage
-
-		// 	this.setState({
-		// 		username: currFullName,
-		// 		location: currUserLocation, 
-		// 		userImage: currUserImage
-		// 	});
-
-		// });
-
 	}
-
-
 
 	render() {
 
 		var groupname = this.props.group.name.toLowerCase().replace(/\s+/g, '')
-
 		var groupURL = window.location.href + "/" + groupname
-
 
 		return(
 

@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 
 class EditPostForm extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
+
       user_id: '',
       image: '',
       title: '',
@@ -21,6 +23,7 @@ class EditPostForm extends Component {
   
   }
 
+
   handleInputChange(e) {
 
   	if (e.target.name === 'image') {
@@ -33,18 +36,16 @@ class EditPostForm extends Component {
   handleEditPostSubmit(e) {
 
     e.preventDefault();
-    //we will be tying this into the POST method in a bit
     let image = this.state.image.trim();
-
-
-    // if (!image || !user || !occupation || !text || !date || !userID )
 
     if (!image) {
       return;
     }
+
     this.props.onEditPostFormSubmit(
     {	image: image
     });
+
     this.setState(
     {	image: ""
     });
@@ -61,15 +62,17 @@ class EditPostForm extends Component {
 	        <input id="edit-post-value"
 	          type='text'
 	          name='image'
-	          placeholder='Enter Image Link…'
+	          placeholder={this.props.targetImageUrl}
 	          value={ this.state.image }
 	          onChange={ this.handleInputChange } />
 	        <input
             className='submit-button'
 	          type='submit'
 	          value='Save Changes' />
-	     </form>
+        </form>
+
       </div>
+
     )
   }
 }

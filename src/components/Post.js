@@ -4,6 +4,7 @@ import { firebase, fb } from "../index.js"
 class Post extends Component {
 
 	constructor(props) {
+
 		super(props);
 		this.state = {
 			username: '',
@@ -16,15 +17,13 @@ class Post extends Component {
 		this.getUser = this.getUser.bind(this);
 		this.deletePost = this.deletePost.bind(this);
 		this.updatePost = this.updatePost.bind(this);
-	}
 
-	// this.props.uniqueId to send post id back to container crud function
+	}
 
 	getUser() {
 
 		let usersRef = fb.child('users');
 		let userId = this.props.post.user_id
-		// console.log("this.props.uniqueId is: ", this.props.uniqueId)
 
 		usersRef.orderByChild('_id').equalTo(userId).on("value", snap => {
 			
@@ -36,6 +35,7 @@ class Post extends Component {
 			let currUserImage = snap.val()[userId].userImage
 
 			this.setState({
+
 				username: currFullName,
 				location: currUserLocation, 
 				userImage: currUserImage,
@@ -49,7 +49,9 @@ class Post extends Component {
 	}
 
 	componentWillMount() {
+
 		this.getUser()
+
 	}	
 
 	deletePost(e) {
@@ -73,6 +75,7 @@ class Post extends Component {
 		return(
 
 			<div className="post-card"> 
+
 				<div className="post-image">
 					<div className="overlay">
       					<button className="card-btn" onClick={this.updatePost}>EDIT</button>
@@ -80,6 +83,7 @@ class Post extends Component {
 					</div>
 					<img className="post-image-bkg" src={this.props.post.image}></img>
 				</div>
+				
 				<div className="post-info">
 					<img className="post-info-profile" src={this.state.userImage} alt={this.state.username}/>
 					<div className="post-info-user">
