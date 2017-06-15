@@ -20,7 +20,7 @@ class PostsContainer extends Component {
 		this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
 		this.handleNewPostSubmit = this.handleNewPostSubmit.bind(this);
 		// this.handlePostSubmit = this.handlePostSubmit.bind(this);
-	// 	// this.handlePostDelete = this.handlePosttDelete.bind(this);
+		this.handlePostDelete = this.handlePostDelete.bind(this);
 	// 	// this.handlePostUpdate = this.handlePostUpdate.bind(this);
 
 	}
@@ -42,28 +42,6 @@ class PostsContainer extends Component {
 
 	handleNewPostSubmit(post){
 
-		// post.city = this.props.routeParams.cityId;
-
-		// console.log('reached handleNewPostSubmit');
-		// let posts = this.state.posts;
-		// console.log('posts is: ', posts);
-		// let newPost = posts.concat([post]);
-		// console.log('newPost is: ', newPost)
-		// this.setState({posts: newPost});
-		// // use this once posts' data route is confirmed
-		// //url: 'http://localhost:3000/api/cities/:cityId/posts'
-
-		// $.ajax({
-		// 	method: 'POST',
-		// 	url: `http://localhost:3000/api/cities/${this.props.routeParams.cityId}/posts/`,
-		// 	data: post
-		// })
-		// .then(res => {
-		// 	console.log('res is: ', res)
-		// }, err => {
-		// 	console.error(err);
-		// 	this.setState({posts: posts});
-		// });
 
 		const postsRef = fb.child('posts');
 
@@ -72,7 +50,7 @@ class PostsContainer extends Component {
         //   if (!userData){
 
 		firebase.database().ref('posts/' + postCount).set({
-			_id: "00" + postCount,
+			_id: "" + postCount,
 			user_id: "00000007",
 			group_id: "00010001",
 			title: "Taco Time",
@@ -88,7 +66,18 @@ class PostsContainer extends Component {
           
 	}
 
-	handlePostDelete(id){
+	handlePostDelete(targetPost){
+
+		console.log("this.props is: ", this.props)
+		console.log("targetPost is: ", targetPost)
+
+		console.log("delete button worked!")
+
+		const postsRef = fb.child('posts');
+		postsRef.child(targetPost.postId).remove()
+		// couldn't move this to global variable
+
+
 	 //    $.ajax({
 	 //      method: 'DELETE',
 	 //      url: 'http://localhost:3000/api/cities/:cityId/posts/:postId'
@@ -122,10 +111,6 @@ class PostsContainer extends Component {
 
 
 	render() {
-
-		// const testPost = this.state.posts[0]
-
-		// console.log('targetPost is: ', testPost)
 
 		return(
 

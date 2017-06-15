@@ -707,12 +707,11 @@ textarea:focus, input:focus{
 
   position: absolute;
   display: none;
-  width: 315px;
+  width: 400px;
   height: 230px;
   border-radius: 20px;
   z-index: 1;
   padding-top: 70px;
-  padding-left: 85px;
   visibility: visible;
   background-color: rgba(0, 0, 0, 0.5);
 
@@ -724,20 +723,20 @@ textarea:focus, input:focus{
 
 }
 
-.post-card:hover .overlay a {
+.post-card:hover .overlay button {
 
   text-decoration: none;
-
+  color: black;
+  padding: 15px 25px;
 }
 
 .card-btn {
 
   border: 2px white solid;
   background: white;
-  padding: 20px 40px;
   border-radius: 30px;
   display: block;
-  margin: 10px;
+  margin: 10px auto;
   width: 120px;
 
 }

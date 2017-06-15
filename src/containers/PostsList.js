@@ -17,6 +17,8 @@ class PostsList extends Component {
 					key={post._id}
 					uniqueId={post._id}
 					post={post}
+					onPostUpdate={this.props.onPostUpdate}
+					onPostDelete={this.props.onPostDelete}
 					className="postCard" />
 			)
 		})
